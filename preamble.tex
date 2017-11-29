@@ -6,7 +6,8 @@
 \usepackage[hidelinks,draft=false]{hyperref}
 \usepackage[skins,theorems]{tcolorbox}
 \usepackage{titlesec}
-\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{libs/circuitikz} % use our own recent version to make sure some bugs are fixed
 \usepackage{pgfplots}
 \usepackage{mathtools}
 \usepackage[makeroom]{cancel}
@@ -20,7 +21,7 @@
 \usepackage{relsize}
 \usepackage{xfrac}
 \usepackage{comment}
-%\usepackage{siunitx}
+\usepackage{siunitx}
 %\usepackage{MnSymbol}
 \usepackage[obeyDraft,disable]{todonotes}
 %\usepackage[linesnumbered,lined]{algorithm2e}
@@ -42,6 +43,7 @@
 \usetikzlibrary{matrix}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes}
+\usetikzlibrary{shadings}
 
 \tcbuselibrary{breakable}
 
@@ -195,6 +197,10 @@
 }{
 }
 \fi
+
+\DeclareSIUnit \voltampere { VA } %apparent power 
+\DeclareSIUnit \var { VAr } %volt-ampere reactive - idle power 
+\DeclareSIUnit \decade { dec } %decade
 
 % Global amount of samples
 % Set to a higher value (e.g. 200) for nicer graphs

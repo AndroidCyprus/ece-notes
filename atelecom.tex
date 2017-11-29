@@ -46,8 +46,12 @@
 	Στη λίστα θα στέλνονται ασκήσεις χρήσιμες για τις εξετάσεις και λοιπές ανακοινώσεις.
 \end{attnbox}
 
-Κάθε Τρίτη 18:00 - 20:00 θα γίνονται ασκήσεις από τον Κ. Αρκουδογιάννη σε \textit{ένα τμήμα},
-και η θεωρία θα γίνεται κανονικά σε τμήματα τις υπόλοιπες ημέρες από τον κ. Δημάκη.
+\begin{attnbox}{Μάθημα}
+	Το μάθημα της Παρασκευής καταργείται.
+	Θα γίνονται μαθήματα σε κοινό τμήμα την Τρίτη και την Τετάρτη.
+	
+	Την Τρίτη θα γίνονται ασκήσεις, και την Τετάρτη θεωρία.
+\end{attnbox}
 
 Εξετάσεις: Όλα ανοιχτά.
 
@@ -257,8 +261,10 @@ t
 	\item[PM] Διαμόρφωση Φάσης (Phase Modulation)
 \end{description}
 
+\section{Διαμόρφωση Πλάτους}
+
 \subsection{AM}
-Έστω το φέρον:
+Έστω το \emph{φέρον}:
 \[
 c(t) = A_c\cos(2\pi f_c t)
 \]
@@ -275,13 +281,17 @@ f_c \gg w
 
 Το σήμα που εκπέμπουμε κατά AM είναι το εξής:
 \[
-s(t) = A_c\left[ 1 + k_a \cdot m(t) \right]\cos(2\pi f_c t)
+\mathlarger{
+	\mathlarger{
+		\mathlarger{
+			s(t) = A_c\left[ 1 + k_a \cdot m(t) \right]\cos(2\pi f_c t)
+		}
+	}
+}
 \]
 το οποίο μπορεί να εκφράζεται σε Volt ή Ampere και ίσως εκπέμπεται από κάποια κεραία.
 
-Γραφικά:
-
-\begin{center}
+Γραφικά: \\* {\centering
 \begin{tikzpicture}[scale=1.2,xscale=1.3]
 \def\f{1.3+0.30362*\x-6.94276*\x^2+5.23511*\x^3-0.0466465*\x^4-0.696833*\x^5+0.128634*\x^6}
 %coordinates {(0,1.5) (0.7,0) (1.2,-0.5) (1.5,0) (2,1.5)  (3,1.5) (3.2,1.5)}
@@ -322,7 +332,7 @@ plot ({\x},{(\f+1)*sin(\x r*40)}) (1.3+1,0);
 \draw (0,0) -- (3,0);
 \end{scope}
 \end{tikzpicture}
-\end{center}
+}
 
 Η περιβάλλουσα του διαμορφωμένου σήματος περιέχει την πληροφορία που θέλουμε.
 
@@ -428,7 +438,7 @@ node[above] {$\sfrac{A_c}{2}$};
 \right]
  \).
  
-Αν έχουμε \textbf{μικρή συχνότητα} \( f_c \), τότε το φάσμα του σήματος δεν περνάει το 0:
+Αν έχουμε \textbf{μικρή συχνότητα} \( f_c \), τότε το φάσμα του σήματος περνάει το 0:
 
 \begin{tikzpicture}[scale=1]
 \draw[dashed] (0.7,0) -- ++(0,1.8);
@@ -623,6 +633,7 @@ S(f) &= \mathsmaller{\mathsmaller{\frac{1}{2} A_c \left[
 \end{align*}
 
 \subsubsection{Ισχύς}
+\label{am.power}
 Αν μας ζητούνταν η ισχύς του σήματος, θα απαντούσαμε \( \frac{1}{2}A_c^2R \), αν θεωρήσουμε
 ότι το σήμα είναι μια ένταση ρεύματος που διαρρέει κάποια αντίσταση \( R \). Στα σήματα
 όμως θεωρούμε ότι η αντίσταση αυτή είναι 1, άρα παίρνουμε ίδιο αποτέλεσμα, είτε θεωρούμε ότι
@@ -862,12 +873,6 @@ A_c\left[ 1+k_am(t) \right] \cos 2πf_c
 Αυτό ήταν ένα παράδειγμα χρήσης \textit{μη γραμμικών στοιχείων} (δίοδος) για spectral
 spread.
 
-\begin{attnbox}{Μάθημα}
-	Το μάθημα της Παρασκευής καταργείται.
-	Θα γίνονται μαθήματα σε κοινό τμήμα την Τρίτη και την Τετάρτη
-	από τον κ. Δημάκη.
-\end{attnbox}
-
 \subsubsection{Φωρατής περιβάλλουσας / Αποδιαμορφωτής AM}
 Ο φωρατής περιβάλλουσας είναι η συσκευή που μαζεύει τις κορυφές του διαμορφωμένου σήματος
 AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε ότι \( s(t) = A_c\left[
@@ -878,7 +883,7 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 \begin{circuitikz}[american,scale=1.3,yscale=0.8]
 	\draw (0,0) to[esource,l_={$s(t)$},n=sig]
 	(0,2) to[R=$R_j$] (0,4)
-	to [D={$z_f$},l_=$τ_f$] (2,4)
+	to [D={$z_f$},l_=$r_f$] (2,4)
 	to [C=$C$] (2,0)
 	-- (0,0)
 	
@@ -892,6 +897,8 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 	
 	\draw (-1,1) node[rxantenna,xscale=-1] (antenna) {};
 	\draw(antenna.1) -- (sig.n);
+	
+	\draw (6,4) to[open,v=$s(t)$] (6,0);
 \end{circuitikz}
 
 \textbf{Πώς λειτουργεί αυτό το κύκλωμα};
@@ -903,14 +910,33 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 κορυφή της διαμορφωμένης κυματομορφής, ο πυκνωτής φορτίζεται άμεσα, και ξεφορτίζεται πολύ
 αργά με μία εκθετική καμπύλη, μέχρι να φτάσει στην επόμενη κορυφή:
 
-\todo{Graph 19}
+\begin{tikzpicture}[scale=1.6]
+\draw (0,-2) -- (0,2) node[right] {$s(t)$};
+\draw (0,0) -- (6,0);
+
+\def\f{2*3.14*0.22};
+\def\fc{2*3.14*3};
+\def\sc{1.4}
+
+\draw[thick,green!50!cyan] plot[smooth,domain=0:6,variable=\t,samples=\gsamples,yscale=\sc]
+(\t,{sin(\fc*(\t r))*(0.7+0.3*cos(\f*(\t r)))});
+
+\draw[green!50!blue,dashed] plot[smooth,domain=0:6,variable=\t,yscale=\sc,yshift=0.5mm]
+(\t,{(0.7+0.3*cos(\f*(\t r)))})
+plot[smooth,domain=0:6,variable=\t,yscale=\sc,yshift=-0.5mm]
+(\t,{-(0.7+0.3*cos(\f*(\t r)))});
+
+\draw[very thick,blue!75!magenta,yscale=\sc] plot[smooth]
+file{data/AM_capacitor.data};
+
+\end{tikzpicture}
 
 Πρακτικά το κύκλωμα χωρίζεται σε δύο κομμάτια. Το αριστερό που περιλαμβάνει τη δίοδο
 έχει μικρή σταθερά χρόνου και επηρεάζεται άμεσα από τις κορυφές. Το δεξί έχει μεγάλη σταθερά
 χρόνου ώστε να διατηρείται η χαμηλής συχνότητας έξοδος. Ο πυκνωτής που βρίσκεται στη
 μέση ανήκει και στα δύο τμήματα. Πρακτικά:
 \begin{gather*}
-	(R_s+τ_f)C \ll \frac{1}{f_C} \\
+	(R_s+r_f)C \ll \frac{1}{f_C} \\
 	\intertext{και}
 	\frac{1}{f_C} \ll R_l C \ll \frac{1}{w}
 \end{gather*}
@@ -922,7 +948,7 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 \begin{circuitikz}[american,scale=1.3,yscale=0.8]
 	\draw (0,0) to[esource,l_={$s(t)$},n=sig]
 	(0,2) to[R=$R_j$] (0,4)
-	to [D={$z_f$},l_=$τ_f$] (2,4)
+	to [D={$z_f$},l_=$r_f$] (2,4)
 	to [C=$C$] (2,0)
 	-- (0,0)
 	
@@ -950,13 +976,48 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 κόψουμε τις συχνότητες κάτω από 20 Hz, μαζί με το χαμηλοπερατό φίλτρο που
 τοποθετήσαμε παραπάνω:
 
-\todo{Graph 20}
+\begin{tikzpicture}[scale=1.2]
+\draw[->] (-3,0) -- (3,0) node[below right] {Hz}; % x axis
+\draw (0,0) -- (0,2);
+
+
+\draw[orange!50!brown,very thick] plot[smooth,tension=1] coordinates {(-0.8,0) (-0.425,0.7) (-0.05,0)};
+\draw[orange!50!brown,very thick] plot[smooth,tension=1] coordinates {(0.8,0) (0.425,0.7) (0.05,0)};
+
+\draw (0.05,0) node[below,scale=0.5] {20};
+\draw (0.8,0) node[below,scale=0.5] {20k};
+
+\draw[orange!20!brown!90!black,very thick,->] (2,0) node[below,black] {$f_c$} -- ++(0,1.5);
+\draw[orange!20!brown!90!black,very thick,->] (-2,0) node[below,black] {$-f_c$} -- ++(0,1.5);
+
+\draw[thick,black!80!green] (-1,0) -- ++(0,1) -- (1,1) -- (1,0);
+\draw[thick,black!70!green] (0.03,0) -- ++(0.3,1.3) -- ++(0.5,0) edge[path fading=east] ++(0.8,0);
+\draw[thick,black!70!green,xscale=-1] (0.03,0) -- ++(0.3,1.3) -- ++(0.5,0) edge[path fading=west] ++(0.8,0);
+\end{tikzpicture}
 
 \paragraph{Πρόβλημα 1: Αργός πυκνωτής}
 Αν ο πυκνωτής είναι πολύ αργός, μπορεί να μην προλάβει να έχει κατέβει αρκετά μέχρι την
 επόμενη κορυφή, και έτσι να χαθεί κάποια πληροφορία του σήματος:
 
-\todo{Graph 21}
+\begin{tikzpicture}[scale=1.2]
+\draw (0,-2) -- (0,2) node[right] {$s(t)$};
+\draw (0,0) -- (6,0);
+
+\def\f{2*3.14*0.22};
+\def\fc{2*3.14*3};
+\def\sc{1.4}
+
+\draw[thick,green!80!cyan] plot[smooth,domain=0:6,variable=\t,samples=\gsamples,yscale=\sc]
+(\t,{sin(\fc*(\t r))*(0.5+0.45*cos(\f*(\t r)))});
+
+\draw[green!50!blue,dashed] plot[smooth,domain=0:6,variable=\t,yscale=\sc,yshift=0.5mm]
+(\t,{(0.5+0.45*cos(\f*(\t r)))})
+plot[smooth,domain=0:6,variable=\t,yscale=\sc,yshift=-0.5mm]
+(\t,{-(0.5+0.45*cos(\f*(\t r)))});
+
+\draw[very thick,blue!75!magenta,yscale=\sc] plot[smooth]
+file{data/AM_capacitor_2.data};
+\end{tikzpicture}
 
 Αυτό μπορεί να διορθωθεί βλέποντας ποιά είναι η μέγιστη ταχύτητα μεταβολή του σήματος, και
 ρυθμίζοντας ανάλογα τις σταθερές της διαμόρφωσης και του αποδιαμορφωτή, ώστε να μην υπάρχει
@@ -968,11 +1029,26 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 αν \( \left| k_a m(t) \right| > 1 \), τότε η αποδιαμόρφωση δεν θα δώσει το επιθυμητό
 αποτέλεσμα, όπως είχαμε αναφέρει και παραπάνω:
 
-\todo{Graph 22}
+\begin{tikzpicture}[scale=1.1]
+\draw (0,-2) -- (0,2) node[right] {$s(t)$};
+\draw (0,0) -- (6,0);
 
-Αυτό μπορεί να διορθωθεί με διαφορετική επιλογή της σταθεράς \( k_a \).
+\def\f{2*3.14*0.22};
+\def\fc{2*3.14*5};
+\def\sc{1.4}
 
-\paragraph{Και άλλοι αποδιαμορφωτές}
+\draw[very thick,green!50!cyan] plot[smooth,domain=0:6,variable=\t,samples=\gsamples,yscale=\sc]
+(\t,{sin(\fc*(\t r))*(0.2+0.8*cos(\f*(\t r)))});
+
+\draw[thick,green!50!blue,dashed] plot[smooth,domain=0:6,variable=\t,yscale=\sc]
+(\t,{(0.2+0.8*cos(\f*(\t r)))})
+plot[smooth,domain=0:6,variable=\t,yscale=\sc]
+(\t,{-(0.2+0.8*cos(\f*(\t r)))});
+\end{tikzpicture}
+
+Αυτό μπορεί να διορθωθεί με διαφορετική επιλογή της σταθεράς \( k_a \), έτσι ώστε \( 1 + k_am(t) \geq 0 \).
+
+\subsubsection{Και άλλοι αποδιαμορφωτές}
 Ο παραπάνω αποδιαμορφωτής, όπως και ο διαμορφωτής, λειτουργεί με χρήση ενός μη γραμμικού
 στοιχείου, της διόδου.
 
@@ -986,15 +1062,16 @@ AM ώστε να παράγει το αρχικό σήμα (θυμόμαστε �
 \end{tikzpicture}
 
 Η συμπεριφορά της διόδου μπορεί να προσεγγιστεί με μια σχέση της μορφής \( y= ax^2+b \).
-Οπότε, ας εξετάσουμε ένα σύστημα που εξάγει το τετράγωνο μιας κυματομορφής:
+Οπότε, ας εξετάσουμε ένα σύστημα που εξάγει το τετράγωνο μιας κυματομορφής, που είναι ένα
+από τα πιο απλά παραδείγματα μη γραμμικών στοιχείων:
 
 \begin{tikzpicture}[scale=1]
 \draw (0,0) node[rectangle,draw,inner sep=5pt] (DM) {αποδιαμορφωτής τετραγωνικού νόμου};
 \draw (DM.west) -- ++(-1,0) node[above right] {$u_1$};
 \draw (DM.east) -- ++(1,0) node[above left] {$u_2$};
 
-\draw (current bounding box.south)
-node[below,yshift=-3mm] {$u_2(t) = a_1u_1(t) + a_2u_1^2(t)$};
+\draw (DM.south)
+node[below] {$u_2(t) = a_1u_1(t) + a_2u_1^2(t)$};
 \end{tikzpicture}
 
 Γενικά, τέτοια μη γραμμικά συστήματα παράγουν πολλές συχνότητες, και μία από αυτές ίσως είναι
@@ -1008,21 +1085,60 @@ node[below,yshift=-3mm] {$u_2(t) = a_1u_1(t) + a_2u_1^2(t)$};
 	u_1(t) &= s(t) = A_c\left[ 1+k_am(t) \right]\cos(2π f_c t) \\
 	u_2(t) &= a_1A_c\left[1+k_am(t)^2\right]\cos 2πf_c t
 	+ a_2A_c^2\left[ 1+k_a m(t) \right]^2 \cos^2 2πf_c t \\
-	&= a_1A_c \cos 2πf_ct \\
-	&\hphantom{=} +a_1A_ck_am(t)\cos 2πf_c t \\
-	&\hphantom{=} +a_2\frac{A_c^2}{2} \\
-	&\hphantom{=} +2a_2\frac{A_c^2}{2}k_a m(t) \\
-	&\hphantom{=} +a_2\frac{A_c^2}{2}k_a^2 m^2(t) \\
-	&\hphantom{=} + a_2\frac{A_c^2}{2}\cos 2π2f_c t \\
-	&\hphantom{=} + a_2\frac{A_c^2}{2} k_a m(t) \cos 2π2f_ct \\
-	&\hphantom{=} + a_2\frac{A_c^2}{2}k_a^2 m^2(t) \cos 2π2f_ct
+	&=             {\color{orange!20!brown!70!black} a_1A_c \cos 2πf_ct} \\
+	&\hphantom{=} +{\color{cyan!80!black}            a_1A_ck_am(t)\cos 2πf_c t} \\
+	&\hphantom{=} +{\color{orange!20!brown!70!black} a_2\frac{A_c^2}{2}} \\
+	&\hphantom{=} +{\color{blue!80!black}            2a_2\frac{A_c^2}{2}k_a m(t)} \\
+	&\hphantom{=} +{\color{magenta!80!black}         a_2\frac{A_c^2}{2}k_a^2 m^2(t)} \\
+	&\hphantom{=} +{\color{cyan!80!black}            a_2\frac{A_c^2}{2}\cos 2π2f_c t} \\
+	&\hphantom{=} +{\color{cyan!80!black}            a_2\frac{A_c^2}{2} k_a m(t) \cos 2π2f_ct} \\
+	&\hphantom{=} +{\color{magenta!80!black}         a_2\frac{A_c^2}{2}k_a^2 m^2(t) \cos 2π2f_ct}
 \end{align*}
 
 Από μία ύψωση στο τετράγωνο δηλαδή προκύπτουν πολλές καινούριες συχνότητες:
 
-\todo{Graph 24}
+\begin{tikzpicture}[scale=1.1,yscale=1.4]
+\draw[->] (-2.5,0) -- (12.5,0) node[below right] {f};
+\draw[->] (0,-1) -- (0,2) node[right] {$Y_2(f)$};
 
-Φαίνεται, όπως είδαμε και στο προηγούμενο κύκλωμα, ο DC όρος στο μηδέν, τα ripples στις
+\draw (0,0) node[below right] {$0$};
+\draw (1,0) node[below] {$\vphantom{2}w$};
+\draw (2,0) node[below] {$2w$};
+\draw (-1,0) node[below] {$-\vphantom{2}w$};
+\draw (-2,0) node[below] {$-2w$};
+
+\begin{scope}
+\clip (-1,0) -- (0,1) -- (1,0);
+\fill[red!50!green, opacity=.4, postaction={pattern=north east lines}] plot[smooth]
+coordinates {(-2,0) (-1,0.4) (1,0.4) (2,0)};
+\end{scope}
+
+\begin{scope}
+\clip plot[smooth]
+coordinates {(-2,0) (-1,0.4) (1,0.4) (2,0)};
+\fill[even odd rule,orange!90!green, opacity=.2, postaction={pattern=north west lines}] plot[smooth]
+coordinates {(-2,0) (-1,0.4) (1,0.4) (2,0)} (-1,0) -- (0,1) -- (1,0);
+\end{scope}
+
+\draw[orange!20!brown!90!black,very thick,->] (0,0)  -- ++(0,1.5);
+\draw[blue!80!black,very thick] (-1,0) -- (0,1) node[right] {$m(f)$} -- (1,0);
+\draw[magenta!90!blue, very thick] plot[smooth] 
+coordinates {(-2,0) (-1,0.4) (1,0.4) (2,0)} (1,0.3) node[above right] {$m^2(f)=m*m$};
+
+\begin{scope}[xshift=5cm]
+\draw[orange!20!brown!90!black,very thick,->] (0,0) node[below,black] {$f_c$} -- ++(0,1.5);
+\draw[cyan!80!black,very thick] (-1,0) -- (0,1)  -- (1,0);
+\end{scope}
+
+\begin{scope}[xshift=10cm]
+\draw[orange!20!brown!90!black,very thick,->] (0,0) node[below,black] {$2f_c$} -- ++(0,1.5);
+\draw[cyan!80!black,very thick] (-1,0) -- (0,1)  -- (1,0);
+\draw[magenta!90!blue, very thick] plot[smooth] 
+coordinates {(-2,0) (-1,0.4) (1,0.4) (2,0)} (1,0.3);
+\end{scope}
+\end{tikzpicture}
+
+Φαίνεται, όπως είδαμε και στο προηγούμενο κύκλωμα, ο DC όρος στο \( f=0 \), τα ripples στις
 υψηλότερες συχνότητες, αλλά και μία παραμόρφωση που οφείλεται στον όρο \( m^2(t) \), η
 οποία, αφού προκύπτει από συνέλιξη του \( m(t) \) (εύρος ζώνης \( w \)) με τον εαυτό του,
 έχει εύρος ζώνης:
@@ -1035,5 +1151,2533 @@ a_2\frac{A_c^2}{2}k_a^2 m^2(t)
 \[
 k_a^2m^2(t) \ll k_am(t) \ll 1
 \]
+
+\subsection{DSB-SC}
+\label{dsb-sc}
+\subsubsection{Στο δρόμο για την κατανάλωση λιγότερης ισχύος}
+Θυμόμαστε το σήμα:
+\begin{align*}
+	s(t) &=
+	A_c\left[1+k_a m(t)\right]\cos 2πf_c t
+	\\
+	&= \underbrace{A_c \cos 2π f_c t} + A_c k_a m(t) \cos 2π f_c t
+\end{align*}
+
+Τι γίνεται αν αφαιρέσουμε τον όρο \( A_c \cos 2πf_c t \), ο οποίος
+δεν περιέχει πληροφορία, αλλά καταναλώνει μόνο παραπάνω ισχύ (θυμόμαστε
+ότι ο όρος αυτός υπάρχει για την αποδιαμόρφωση);
+
+Τότε θα πάρουμε ένα άλλο σήμα:
+\[
+\boxed{s(t) = A_c m(t) \cos 2π f_c t}
+\]
+το οποίο ονομάζουμε διαμορφωμένο κατά \textbf{DSB-SC} (Double Side Band - Supressed Carrier).
+
+Μετασχηματισμένο κατά Fourier:
+\[
+S(f) =
+\frac{1}{2} A_c \left[
+M(f-f_c) + M(f+f_c)
+\right]
+\]
+
+Δηλαδή το σήμα εξόδου αποτελείται από το αρχικό σήμα, μετατοπισμένο
+μόνο κατά τη συχνότητα:
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw[draw=orange!50!brown,very thick]
+(-0.8,0) node[below] {$-w$}
+-- (0,1.4) node[right] {$M(0)$}
+-- (0.8,0) node[below] {$w$}
+;
+
+\draw (-2,0) -- (2,0);
+\draw (0,-0.5) -- (0,2.5) node[right] {$M(f)$};
+
+\draw[->,very thick, blue!60!black]
+(2.5,1.25) -- ++(2,0);
+
+\begin{scope}[xshift=9cm]
+\draw[xshift=-2cm,draw=brown!50!orange,very thick,every node/.style={scale=.9}]
+(-0.8,0)
+-- (0,1.4)
+-- (0.8,0)
+(0,0) node[below] {$-f_c$}
+;
+\draw[xshift=2cm,draw=brown!50!orange,very thick]
+(-0.8,0)
+-- (0,1.4)
+-- (0.8,0)
+(0,0) node[below] {$f_c$}
+;
+
+\draw (-4,0) -- (4,0);
+\draw[->] (0,-0.5) -- (0,2.5) node[right] {$S(f)$};
+
+\draw[dashed] (-2.1,1.4) --++(4.2,0);
+\draw (0,1.4) node[above right] {$\sfrac{1}{2}A_cM(0)$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+
+Στο πεδίο του χρόνου, το σήμα φαίνεται κάπως έτσι:
+
+\begin{tikzpicture}[scale=1.1]
+\draw (0,-2) -- (0,2);
+\draw (0,0) -- (6,0);
+
+\def\f{2*3.14*0.22};
+\def\fc{2*3.14*5};
+\def\sc{1.4}
+
+\draw[very thick,blue!50!black] plot[smooth,domain=0:6,variable=\t,samples=\gsamples,yscale=\sc]
+(\t,{(1-0.1*\t)*sin(\fc*(\t r))*(0.2+0.8*cos(\f*(\t r)))});
+
+\draw[thick,green!50!blue] plot[smooth,domain=0:6,variable=\t,yscale=\sc*1.1]
+(\t,{(1-0.1*\t)*(0.2+0.8*cos(\f*(\t r)))});
+\draw[thick,green!80!cyan] plot[smooth,domain=0:6,variable=\t,yscale=\sc*1.1]
+(\t,{-(1-0.1*\t)*(0.2+0.8*cos(\f*(\t r)))});
+\end{tikzpicture}
+
+
+Παρατηρούμε την αρχική κυματομορφή, η οποία αποκτά και αρνητικές τιμές,
+με αποτέλεσμα η χρήση του αποδιαμορφωτή AM που χρησιμοποιήσαμε και
+προηγουμένως να μην είναι εφικτή.
+
+Στην πραγματικότητα, ο σχεδιασμός ενός αποδιαμορφωτή AM είναι
+πιο δύσκολος.
+
+\subsubsection{Αποδιαμορφωτής}
+\label{dsbsc.demodulator}
+
+Σχεδιάζουμε το κύκλωμα του αποδιαμορφωτή ως έναν πολλαπλασιαστή
+του φέροντος με το διαμορφωμένο σήμα, φροντίζοντας να μην ξεχάσουμε
+το δικό μας φέρον να έχει την \textbf{κατάλληλη φάση} \( φ \) που να αντιστοιχεί
+στη φάση του φέροντος του λαμβανόμενου σήματος:
+
+\begin{circuitikz}[scale=2]
+	\draw (0,0) node[xshift=4.9mm,oscillator] (osc) {}
+	node[above right,xshift=5mm] {$A_c' \cos(2πf_c t + φ)$};
+	\draw (0,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (mult) {}
+	node[scale=1.5] {$\times$};
+	
+	\draw[<-] (mult.west) -- ++(-1,0) node[above,midway] {$s(t)$};
+	\draw[->] (mult.east) -- ++(1,0) node[above,midway] {$u(t)$};
+	\draw[->] (osc.north) -- (mult.south);
+\end{circuitikz}
+
+Τότε, με λίγα μαθηματικά έχουμε:
+\begin{align*}
+	u(t) &=
+	s(t)\cdot c(t) =
+	A_c \cos(2π f_c t + φ)A_C m(t)\cos(2πf_c t)
+	\\ &=
+	\frac{1}{2} A_c A_c'
+	m(t) \cos(2π2f_ct + φ) + \frac{1}{2}A_cA_c' m(t)\cos φ
+\end{align*}
+Και, εφαρμόζοντας ένα φίλτρο LPF που κόβει τις υψηλές συχνότητες \( 2π2f_c \):
+\begin{tikzpicture}[scale=0.3,baseline]
+\filldraw[fill=green!80!black,fill opacity=.1] (-1.2,0) -- (-1,1.8) -- (1,1.8) -- (1.2,0);
+
+\draw[draw=blue!50!brown,very thick]
+(-0.8,0)
+-- (0,1.4)
+-- (0.8,0)
+;
+
+\draw[draw=red,opacity=.8,xshift=3cm,thick]
+(-0.8,0)
+-- (0,1.4)
+-- (0.8,0)
+;
+
+\draw[draw=red,opacity=.8,xshift=-3cm,thick]
+(-0.8,0)
+-- (0,1.4)
+-- (0.8,0)
+;
+
+\draw (-5,0) -- (5,0);
+\draw (0,-0.5) -- (0,2.5);
+\end{tikzpicture}%
+\begin{align*}
+	\left. u(t) \right\lvert_{\mathrm{LPF}}
+	&= \frac{1}{2} A_c A_c' m(t) \cos φ
+\end{align*}
+
+Στο τελικό αποτέλεσμα έχουμε το επιθυμητό \( m(t) \), και έναν
+όρο \( \boxed{\cos φ} \). Όταν η γωνία \( φ \) (που εκφράζει τη διαφορά
+φάσης μεταξύ του φέροντος του δέκτη και του πομπού) είναι 0, τότε
+\( \cos φ = 1 \), και το σήμα έχει πλήρες πλάτος. Όταν έχουμε
+\( φ = \pm \frac{π}{2} \) όμως, ο διαμορφωτής και ο
+αποδιαμορφωτής δεν είναι συγχρονισμένοι, και δεν παίρνουμε καθόλου
+σήμα.
+
+Ο λόγος που ήταν δύσκολο να υλοποιηθούν τέτοια κυκλώματα ήταν
+η έλλειψη φθηνών κυκλωμάτων συγχρονισμού τα οποία μπορούν να παρακολουθήσουν
+τη φάση \( φ \). Η φάση του φέροντος μπορεί να επηρεαστεί από
+εμπόδια που υπάρχουν στη διαδρομή του κύματος, κάτι που οδηγούσε και
+στα φαινόμενα των \textit{διαλείψεων} στα παλιότερα ραδιόφωνα.
+Για συγχρονισμό της φάσης μπορεί να χρησιμοποιηθεί ένα σύστημα
+αυτομάτου ελέγχου PLL (Phase-Locked Loop).
+
+Τελικά, το κύκλωμα προκύπτει:
+
+\begin{circuitikz}[scale=2]
+	\draw (0,0) node[xshift=4.9mm,oscillator] (osc) {}
+	node[above right,xshift=5mm] {$A_c' \cos(2πf_c t + φ)$};
+	\draw (0,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (mult) {}
+	node[scale=1.5] {$\times$};
+	\draw (1.3,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (lpf) {}
+	node[] {LPF};
+	
+	\draw[<-] (mult.west) -- ++(-1,0) node[above,midway] {$s(t)$};
+	\draw(mult.east) -- (lpf.west);
+	\draw[->] (lpf.east) -- ++(0.5,0);
+	\draw[->] (osc.north) -- (mult.south);
+\end{circuitikz}
+
+\subsubsection{Δακτυλιοειδής διαμορφωτής (ring modulator)}
+Προκύπτει το ερώτημα πώς μπορούμε να υλοποιήσουμε κυκλωματικά
+έναν πολλαπλασιαστή. Έστω λοιπόν ότι θέλουμε να πολλαπλασιάσουμε
+ένα σήμα \( m(t) \) με ένα φέρον \( A_c\cos2π f_ct \).
+
+Για αυτόν τον λόγο υπάρχει ένα κύκλωμα που ονομάζεται
+\textbf{δακτυλιοειδής διαμορφωτής (ring modulator)}, με είσοδο
+το \( m(t) \) και μια τετραγωνική κυματομορφή \( c(t) \) συχνότητας
+\( f_c \):
+
+\begin{circuitikz}[scale=1,american]
+	\draw (0,0) node[transformer core] (t1) {};
+	\draw (6,0) node[transformer core] (t2) {};
+	
+	\draw (t1.A1) to[open,v=$m(t)$] (t1.A2);
+	\draw (t2.B1) to[open,v^=$s(t)$] (t2.B2);
+	
+	\draw (t1.B1) node[above] {$a$} to[diode,*-*] (t2.A1);
+	\draw (t2.A1) node[above] {$b$} to[diode] ($(t2.A1)!0.6!(t1.B2)$) -- (t1.B2);
+	\draw (t1.B2) node[below] {$c$} to[diode,*-*] (t2.A2);
+	\draw (t2.A2) node[below] {$d$} --
+	($(t2.A2)!0.48!(t1.B1)$) to[bend left=90] ($(t2.A2)!0.525!(t1.B1)$)
+	to[diode] ($(t2.A2)!0.9!(t1.B1)$) 
+	-- (t1.B1);
+	
+	\coordinate (C1) at ($(t1.B1)!0.5!(t1.B2) - (0.4,0)$);
+	\coordinate (C2) at ($(t2.A1)!0.5!(t2.A2) + (0.4,0)$);
+	
+	\def\m{0.2}
+	\def\h{2.5}
+	\def\l{1.7}
+	\draw (C1) to[short,*-] ++(\m,0) -- ++(0,-\h) to[short,-*] ++(\l,0) node (l1) {};
+	\draw (C2) to[short,*-] ++(-\m,0) -- ++(0,-\h) to[short,-*] ++(-\l,0) node (l2) {};
+	\draw (l1) to[open,v=$c(t)$] (l2);
+\end{circuitikz}
+
+Αυτό το κύκλωμα ουσιαστικά εναλλάσει την αλλαγή ή όχι του προσήμου
+της κυματομορφής εισόδου:
+
+\begin{tikzpicture}[scale=0.7]
+\pgfmathdeclarefunction{mysquare}{1}{%
+	\pgfmathparse{int(mod(4*#1,2))}%
+	\ifnum\pgfmathresult>0 \pgfmathparse{-1}\else\pgfmathparse{1}\fi%
+}
+
+\draw (0,0) -- (5,0);
+\draw (0,-2) -- (0,2) node[above right] {$c(t)$};
+
+\def\step{0.25}
+\def\ampl{1.8}
+\foreach \x in {0,0.5,...,4.5} {
+	\draw[thick,blue] (\x,\ampl) -- ++(\step,0) -- ++(0,-2*\ampl) -- ++(\step,0) -- ++(0,2*\ampl);
+}
+
+\draw[orange!50!brown!50!black,<->,yshift=-2mm] (0,0) -- (2*\step,0) node[midway,below,scale=.8] {$\sfrac{1}{f_c}$};
+
+\begin{scope}[xshift=6cm]
+\draw (0,0) -- (5,0);
+\draw (0,-2) -- (0,2) node[above right] {$m(t)$};
+
+\draw[very thick,blue!50!black] plot [variable=\x,domain=0:5,samples=\gsamples] (\x,{1.5*cos(\x r)});
+\end{scope}
+
+\begin{scope}[xshift=12cm]
+\draw (0,0) -- (5,0);
+\draw (0,-2) -- (0,2) node[above right] {$s(t)$};
+
+\draw[blue!50!black,densely dashed,opacity=.9]
+plot [variable=\x,domain=0:5,samples=\gsamples] (\x,{1.5*cos(\x r)})
+plot [variable=\x,domain=0:5,samples=\gsamples] (\x,{-1.5*cos(\x r)});
+
+\draw[very thick,orange!50!red] plot [variable=\x,domain=0:5,samples=\gsamples]
+(\x,{mysquare(\x)*1.5*cos(\x r)});
+\end{scope}
+\end{tikzpicture}
+
+Πρακτικά, πολλαπλασιάζει το \( c(t) \) με το \( m(t) \). Μαθηματικά,
+παίρνουμε τη σειρά Fourier του \( c \) και βλέπουμε:
+\begin{align*}
+	c(t) &= \frac{4}{π}
+	\sum_{n=1}^{\infty}
+	\frac{(-1)^{n-1}}{2n-1}\cos\left[
+	2πf_c(2n-1)t
+	\right] \implies \\
+	m(t)c(t) &= \frac{4}{π}m(t)
+	\sum_{n=1}^{\infty}
+	\frac{(-1)^{n-1}}{2n-1}\cos\left[
+	2πf_c(2n-1)t
+	\right]
+\end{align*}
+
+Ακριβώς όπως μελετήσαμε τον διαμορφωτή και τον αποδιαμορφωτή AM,
+ίσως μέσα στις συχνότητες της παραπάνω συνάρτησης υπάρχει και το
+σήμα που θέλουμε:
+\begin{align*}
+	n=1\qquad & \infoboxed{m(t)\frac{4}{π}\cos2πf_c t} \qquad \leftarrow \text{το επιθυμητό σήμα} \\
+	n=2\qquad & m(t)\frac{4}{π}\cos2π3f_c t\\
+	n=3\qquad & m(t)\frac{4}{π}\cos2π5f_c t
+\end{align*}
+
+\begin{tikzpicture}[scale=1]
+\filldraw[fill=blue!80!black,fill opacity=.1]
+(1.5-0.8,0) -- (1.5-0.7,1.8)
+to node[midway,above,opacity=1,black] {BPF} (1.5+0.7,1.8) -- (1.5+0.8,0);
+
+\draw[dashed] (1.5,0) node[below] {$f_c$}-- ++(0,1.4);
+\draw[draw=orange!90!brown!80!black,opacity=.8,xshift=1.5cm,very thick] (-0.6,0) -- (0,1.4) -- (0.6,0);
+
+\draw[dashed] (3.5,0) node[below] {$3f_c$}-- ++(0,1.4);
+\draw[draw=orange!70!brown!70!black,opacity=.8,xshift=3.5cm,thick] (-0.6,0) -- (0,1.4) -- (0.6,0);
+
+\draw[dashed] (5.5,0) node[below] {$5f_c$}-- ++(0,1.4);
+\draw[draw=orange!70!brown!70!black,opacity=.8,xshift=5.5cm,thick] (-0.6,0) -- (0,1.4) -- (0.6,0);
+
+\draw (6.3,0.7) node[right] {$\cdots$};
+
+\begin{scope}[xscale=-1]
+\filldraw[fill=blue!80!black,fill opacity=.1]
+(1.5-0.8,0) -- (1.5-0.7,1.8)
+to (1.5+0.7,1.8) -- (1.5+0.8,0);
+
+\draw[dashed] (1.5,0) node[below] {$-f_c$}-- ++(0,1.4);
+\draw[draw=orange!70!brown!70!black,opacity=.8,xshift=1.5cm,thick] (-0.6,0) -- (0,1.4) -- (0.6,0);
+
+\draw[dashed] (3.5,0) node[below] {$-3f_c$}-- ++(0,1.4);
+\draw[draw=orange!70!brown!70!black,opacity=.8,xshift=3.5cm,thick] (-0.6,0) -- (0,1.4) -- (0.6,0);
+
+\draw[dashed] (5.5,0) node[below] {$-5f_c$}-- ++(0,1.4);
+\draw[draw=orange!70!brown!70!black,opacity=.8,xshift=5.5cm,thick] (-0.6,0) -- (0,1.4) -- (0.6,0);
+
+\draw (6.3,0.7) node[left] {$\cdots$};
+\end{scope}
+
+\draw (-6.3,0) -- (6.3,0);
+\draw (0,-0.5) -- (0,2.5);
+\end{tikzpicture}
+
+Επομένως, παίρνουμε ένα band pass φίλτρο μόνο για τις συχνότητες
+του \( n=1 \) και προκύπτει η ζητούμενη έξοδος \( m(t)\frac{4}{π}
+\cos2πf_c t \).
+
+Τέτοιου είδους κυκλώματα, σε συνδυασμό με το Band Pass Filter, είναι
+διαθέσιμα στο εμπόριο και ονομάζονται \textbf{μίκτες (mixers)}.
+
+Να σημειωθεί βέβαια πως για να λειτουργήσει σωστά αυτή η διάταξη,
+πρέπει το κύκλωμα και τα χαρακτηριστικά των στοιχείων του
+(δίοδοι, μετασχηματιστές) να είναι συμμετρικά.
+
+Εναλλακτικά, μπορεί να χρησιμοποιηθεί για το ίδιο αποτέλεσμα
+ένα κύκλωμα που ονομάζεται double-balanced modulator και λειτουργεί
+με δύο όμοιους διαμορφωτές AM:
+
+\begin{circuitikz}[scale=0.7]
+	\draw(-1,0) node[oscillator,xshift=4.9mm] (osc) {};
+	\draw (2,2) node[draw,rectangle,align=left,inner sep=5pt,scale=.7] (am1) {AM\\διαμορφωτής};
+	\draw (2,-2) node[draw,rectangle,align=left,inner sep=5pt,scale=.7] (am2) {AM\\διαμορφωτής};
+	\draw (5,0) node[draw,circle,scale=1.4,thick] (add) {$+$};
+	\draw (-1,-2.2) node[draw,rectangle] (o1) {$-1$};
+	\draw (0,-1) node[draw,rectangle] (o2) {$-1$};
+	
+	\draw[->] (-3,2.2) -- (am1.west |- 0,2.2);
+	\draw[<-] (o1.west) -- ++(-1,0) -- ++(0,2.2+2.2) node[circ] {};
+	\draw[->] (o1.east) -- (am2.west |- 0,-2.2);
+	\draw[->] (osc.east) -| (o2.north);
+	\draw[->] (o2.south) |- (am2.west |- 0,-1.8);
+	\draw[->] (osc.north) |- (am1.west |- 0,1.8);
+	\draw[->] (am1.east) -| (add.north);
+	\draw[->] (am2.east) -| (add.south);
+	\draw[->] (add.east) -- ++(1,0);
+\end{circuitikz}
+
+\subsubsection{Δέκτης Costas}
+Θυμόμαστε ότι για ένα σήμα:
+\[
+s(t) = A_cm(t) \cdot \cos(2πf_ct + φ)
+\]
+μπορούμε εύκολα να βρούμε τον όρο \( A_c' \cos (2πf_ct) \), αλλά όχι
+τον όρο \( A_c'\cos(2πf_c t + φ) \) (εκτός ίσως αν τον επανεκπέμψουμε μόνο του από την πλευρά του πομπού με διαφορετική, π.χ διπλάσια συχνότητα, κάτι που δεν εφαρμόζεται επειδή καταναλώνονται κι άλλες
+συχνότητες).
+
+Σχεδιάζουμε έναν νέο δέκτη, ο οποίος αποτελείται από δύο απλούς
+αποδιαμορφωτές της ενότητας \ref{dsbsc.demodulator}:
+
+\begin{circuitikz}[scale=1.1]
+	\draw (0,-0.75) node[draw,rectangle] (ps) {$-90\degree$};
+	\draw (0,2) node[draw,rectangle,scale=2,outer sep=0] (m1) {$\times$};
+	\draw (0,-2) node[draw,rectangle,scale=2, outer sep=0] (m2) {$\times$};
+	\draw (3,0) node[draw,rectangle,inner sep=5pt] (osc) {Ταλαντωτής}
+	node[below,yshift=-3.5mm,scale=.7] {ελεγχόμενος από τάση};
+	\draw (2,2) node[draw,rectangle,inner sep=5pt] (lpf1) {LPF};
+	\draw (2,-2) node[draw,rectangle,inner sep=5pt] (lpf2) {LPF};
+	\draw (6.5,0) node[draw,rectangle,inner sep=5pt,align=center] (pd) {Διευκρινιστής\\φάσης};
+	
+	\coordinate (M) at (-2,0);
+	
+	\draw (M) -- ++(-3,0) node[midway,above] {$A_m(t)\cos(2πft)$};
+	\draw[->] (M) |- node[above right,blue!50!black] {\textbf{I}} (m1.west);
+	\draw[->] (M) |- node[below right,blue!50!black] {\textbf{Q}} (m2.west);
+	\draw[->] (osc) -| (m1);
+	\draw[->] (osc) -| (ps) -- (m2);
+	\draw[->] (m1) -- (lpf1);
+	\draw[->] (lpf1) -| (pd);
+	\draw[->] (m2) -- (lpf2);
+	\draw[->] (lpf2) -| (pd);
+	\draw[->] (pd) -- (osc);
+	
+	\draw (osc.north east) node[right,xshift=-1mm,yshift=2mm,orange!50!brown!50!black]
+	{$\overbrace{-\phi}^{\mathclap{\text{αρνητική ανάδραση}}}$};
+	\draw[blue!80!cyan,<-] ($(pd.south)!0.5!(pd.south east)$) to[bend right] ++(0.7,-0.5) node[right,scale=.9,align=center]
+	{Διαιρεί τα σήματα\\$\frac{\cos\phi}{\sin\phi}=\tan\phi$};
+	
+	\draw[->] (pd.north |- lpf1.east) -- ++(1.5,0);
+	\draw[->] (pd.south |- lpf2.east) -- ++(1.5,0);
+	
+	\path (lpf1) -- (pd |- lpf1) node[midway,above] {$\sfrac{1}{2}A_c\cos\phi\; m(t)$};
+	\path (lpf2) -- (pd |- lpf2) node[midway,below] {$\sfrac{1}{2}A_c\sin\phi\; m(t)$};
+	\path (osc -| ps) -- (m1.south) node[midway,right] {$\cos(2πf_ct)$};
+	\path (ps.south) -- (m2.north) node[midway,right] {$\sin(2πf_ct)$};
+\end{circuitikz}
+
+Ο δέκτης αυτός ονομάζεται \textbf{δέκτης Costas}, και αποτελείται
+από έναν ταλαντωτή \( \cos(2π f_c t + φ) \), και δύο κλάδους
+αποδιαμορφωτών, από τους οποίους ο ένας πολλαπλασιάζεται με φέρον
+φάσης \( φ \), και ο δεύτερος με φέρον φάσης \( φ-90\degree \).
+Στη συνέχεια, τα δύο σήματα διαιρούνται ώστε να βρούμε τη γωνία
+\( φ \approx \tan φ = \frac{\cos φ}{\sin φ}
+= \frac{\sfrac{1}{2}A_c \cos φ m(t) }{\sfrac{1}{2} A_c \sin φ m(t) } \). Η γωνία αυτή πηγαίνει ως είσοδος στον ταλαντωτή, έτσι ώστε να
+διορθωθεί η φάση του σήματος που δίνει ως έξοδο μέσω μιας διαδικασίας
+αρνητικής ανάδρασης.
+
+\subsection{QAM}
+Έστω ότι έχουμε δύο σήματα, \( m_1(t) \) και \( m_2(t) \), καθώς και το γνωστό φέρον
+\( c(t) = A_c\cos2πf_c t \). Διαμορφώνουμε τα σήματα κατά \hyperref[dsbsc.demodulator]{DSB-SC}, όπως
+παρουσιάσαμε στην προηγούμενη ενότητα. Το ένα το διαμορφώνουμε
+με φέρον \( A_c\cos 2π f_c t \), και το άλλο με φέρον
+\( A_c\sin 2πf_c t \), δηλαδή φάση μικρότερη κατά \( 90\degree \).
+Στο τέλος, προσθέτουμε τα δύο διαμορφωμένα σήματα:
+
+\begin{circuitikz}[scale=1.2]
+	\draw (0,-0.75) node[draw,rectangle] (ps) {$-90\degree$};
+	\draw (0,2) node[draw,rectangle,scale=2,outer sep=0] (m1) {$\times$};
+	\draw (0,-2) node[draw,rectangle,scale=2, outer sep=0] (m2) {$\times$};
+	\draw (2,0) node[oscillator,xshift=4.9mm] (osc) {};
+	\draw (3,2) node[draw,circle,scale=1.2,thick] (sum) {$\sum$};
+	
+	\draw[->] (osc.west) -| (m1);
+	\draw[->] (osc.west) -| (ps) -- (m2);
+	\draw[->] (m1) -- (sum) node[above,midway] {$s(t)$};
+	\draw[->] (m2) -| (sum);
+	\draw[->] (sum) -- ++(2,0) node[above right,pos=.2]
+	{$s(t)=A_cm(t)\cos 2πf_c t + A_cm(t)\sin2πf_ct$};
+	\draw[<-] (m1) -- ++(-2,0) node[above,midway] {$m_1(t)$};
+	\draw[<-] (m2) -- ++(-2,0) node[below,midway] {$m_2(t)$};
+	
+	\path (m2) -- (m2 -| sum) node[pos=0,below right] {$s'(t) = A_cm(t)\sin2πf_ct$};
+	\path (osc -| ps) -- (m1.south) node[midway,right,scale=.8] {$\cos(2πf_ct+\phi)$};
+	\path (ps.south) -- (m2.north) node[midway,right,scale=.8] {$\sin(2πf_ct+\phi)$};
+	
+	\draw (m1.north) node[above,blue!50!black,scale=1.2] (I) {I};
+	\draw (I) node[above,blue!50!black,scale=.7,yshift=2mm] {in phase};
+	\draw (m2.south) node[below,blue!50!black,scale=1.2] (Q) {Q};
+	\draw (Q) node[below,blue!50!black,scale=.7,yshift=-2mm] {quadrature};
+	
+	\draw[<-,green!50!gray] (m1.north east) to[bend left] ++(0.7,0.5)
+	node[right,scale=.9] {διαμορφωτής (πολλαπλασιασμού)};
+\end{circuitikz}
+
+Δηλαδή η έξοδος είναι:
+\[
+s(t) = A_c m(t)\cos 2π  f_c t
++ A_c m(t) \sin 2π f_c t
+\]
+
+Για να τη μελετήσουμε στο πεδίο της συχνότητας, πρώτα θυμόμαστε τους
+Μ/Σ Fourier των \( \cos \) και \( \sin \):
+\begin{align*}
+	\cos 2πf_c t &\leftrightarrow
+	\frac{1}{2} δ(f-f_c) + \frac{1}{2}δ(f-f_c)
+	\\
+	\sin 2πf_ct &\leftrightarrow
+	\frac{1}{2} jδ(f-f_c) + \frac{1}{2}jδ(f+f_c)
+\end{align*}
+
+Δηλαδή το πεδίο της συχνότητας περιέχει τιμές στο μιγαδικό επίπεδο,
+οι οποίες μπορούν να παρουσιαστούν ως εξής:
+
+\begin{tikzpicture}[scale=1]
+\draw[brown!50!orange!50!blue,ultra thick,->]
+(2,0) node[below,black,xshift=1mm] {$f_c$} -- ++(0,1.4) node[right] {$\cos t$};
+\draw[brown!30!orange!30!blue,ultra thick,->]
+(2,0) -- ++(0,0,2.5) node[below right] {$\sin t$};
+
+\draw[brown!50!orange!50!blue,ultra thick,->]
+(-2,0) node[below,black,xshift=2mm] {$-f_c$} -- ++(0,1.4);
+\draw[brown!30!orange!30!blue,ultra thick,->]
+(-2,0) -- ++(0,0,2.5);
+
+\draw[->] (-4,0) -- (4,0) node[right] {$f$};
+\draw[->] (0,-2) -- (0,2.5) node[right] {Re};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\draw[path fading=east] (0,0,0) -- (0,0,-5);
+\end{tikzpicture}
+
+Άρα το σήμα έχει μορφή:
+
+\begin{tikzpicture}[scale=1]
+\draw[draw=orange!50!brown,very thick]
+(-0.8,0) node[below] {$-w$}
+-- (0,1.4)
+-- (0.8,0) node[below] {$w$}
+;
+
+\draw (-2,0) -- (2,0);
+\draw (0,-2.5) -- (0,2.5) node[right] {$M(f)$};
+
+\draw[->,very thick, black]
+(2.5,0) -- ++(2,0);
+
+\begin{scope}[xshift=9cm]
+\draw[opacity=.5,dashed] (-2,0) -- ++(0,1.4);
+\draw[opacity=.5,dashed] (2,0) -- ++(0,1.4);
+
+\draw[orange!50!black,opacity=.5] (2-1,0) |- (2,0.6) -| node[above right,scale=.8] {$2w$} (2+1,0);
+
+\draw[xshift=-2cm,draw=brown!50!orange,very thick,every node/.style={scale=.9}]
+(-0.8,0) -- (0,1.4) -- (0.8,0)
+(0,0) node[below] {$-f_c$};
+
+\draw[xshift=-2cm,draw=brown!50!orange,very thick,fill=red,fill opacity=.1,postaction={pattern=north east lines,opacity=.3}]
+(-0.8,0,0) -- (0,0,3) -- (0.8,0,0);
+\draw[xshift=2cm,draw=brown!50!orange,very thick,fill=red,fill opacity=.1,postaction={pattern=north east lines,opacity=.3}]
+(-0.8,0,0) -- (0,0,3) -- (0.8,0,0);
+
+\draw[xshift=2cm,draw=brown!50!orange,very thick]
+(-0.8,0) node[below,scale=.7] {$f_c-w$}
+-- (0,1.4)
+-- (0.8,0) node[below,scale=.7] {$f_c+w$}
+(0,0) node[below] {$f_c$}
+;
+
+\draw (-4,0) -- (4,0);
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\end{scope}
+\end{tikzpicture}
+
+Να σημειωθεί πως το γεγονός ότι υπάρχουν και τιμές στον φανταστικό
+άξονα, δεν σημαίνει ότι το σήμα δεν υφίσταται στην πραγματικότητα,
+αλλά ότι περιέχει και δεδομένα στην φάση του!
+
+Η διαδικασία της αποδιαμόρφωσης μπορεί να μας επιστρέψει και τα
+δύο σήματα, όπως και στον αποδιαμορφωτή DSB-SC, πολλαπλασιάζοντας
+την είσοδο αρχικά με \( \cos2π f_c t \), και μετά με \( \sin 2π f_c t \):
+
+\begin{circuitikz}[scale=1.2,yscale=0.7]
+	\draw (0,-0.75) node[draw,rectangle] (ps) {$-90\degree$};
+	\draw (0,2) node[draw,rectangle,scale=2,outer sep=0] (m1) {$\times$};
+	\draw (0,-2) node[draw,rectangle,scale=2, outer sep=0] (m2) {$\times$};
+	\draw (2,0) node[oscillator,xshift=4.9mm] (osc) {};
+	\draw (2,2) node[draw,rectangle,inner sep=5pt] (lpf1) {LPF};
+	\draw (2,-2) node[draw,rectangle,inner sep=5pt] (lpf2) {LPF};
+	
+	\coordinate (M) at (-1.5,0);
+	
+	\draw[<-] (M) -- ++(-1,0) node[midway,above] {$s(t)$};
+	\draw[->] (M) |- (m1.west);
+	\draw[->] (M) |- (m2.west);
+	\draw[->] (osc.west) -| (m1);
+	\draw[->] (osc.west) -| (ps) -- (m2);
+	\draw[->] (m1) -- (lpf1);
+	\draw[->] (m2) -- (lpf2);
+	\draw[->] (lpf1) -- ++(2,0) node[above] {$A_c m_1(t)$};
+	\draw[->] (lpf2) -- ++(2,0) node[below] {$A_c m_2(t)$};
+	
+	\path (ps.south) -- (m2.north) node[midway,right,scale=.7] {$\sin(2πf_ct)$};
+\end{circuitikz}
+
+Οπότε, π.χ η πρώτη έξοδος είναι:
+\begin{align*}
+	s(t) \cos 2π f_c t
+	&= 2 A_c m_1(t) \cos^2 2π f_c t + 2A_c m_2(t)\cos2π f_c t
+	\sin2πf_c t \\
+	&= A_c m_1(t)
+\end{align*}
+
+Αυτή η τεχνική εκμεταλλεύεται την ορθογωνικότητα του ημιτόνου και του
+συνημιτόνου ώστε να μεταδώσει διπλάσιο σήμα στο ίδιο εύρος ζώνης.
+Είναι μία τεχνική \textbf{πολυπλεξίας}, και ονομάζεται
+\textbf{QAM (Quadrature Amplitude Modulation - Διαμόρφωση ορθογωνικών
+	φερόντων)}. Δεν χρησιμοποιούνταν σε εμπορικές εφαρμογές λόγω
+του κόστους των πολλών διαμορφωτών και του κυκλώματος συγχρονισμού.
+
+\subsection{SSB}
+Αφού τα αρχικά σήματα που χρησιμοποιούμε έχουν δίπλευρο φάσμα, όταν
+διαμορφωθούν, ξοδεύουν εύρος ζώνης \( 2w \), και το σήμα εμφανίζεται
+δύο φορές γύρω από τη συχνότητα \( f_c \).
+
+\begin{tikzpicture}[scale=1]
+\draw[draw=orange!50!brown,very thick]
+(-0.8,0) node[below] {$-w$}
+-- (0,1.4)
+-- (0.8,0) node[below] {$w$}
+;
+
+\draw (-2,0) -- (2,0);
+\draw (0,-0.5) -- (0,2.5);
+
+\draw[->,very thick, black]
+(2.5,1) -- ++(2,0);
+
+\begin{scope}[xshift=9cm]
+\fill[opacity=.5,path fading=east,green!30!gray] (2,0) -- ++(0,1.6) -- ++(25:1.5) -- ++(0,-3.1) -- (2,-0.2);
+
+\draw[opacity=.5] (2,0) -- ++(0,1.6) edge[path fading=north] ++(25:1.5)
+(2,0) -- ++(0,-0.2) edge[path fading=south] ++(-25:1.5);
+
+
+\draw[opacity=.5,dashed] (-2,0) -- ++(0,1.4);
+\draw[opacity=.5,dashed] (2,0) -- ++(0,1.4);
+
+\draw[orange!50!black,opacity=.8] (2-1,0) |- (2,-0.6) -| node[below right,scale=.8] {$2w$} (2+1,0);
+\draw[orange!70!black,opacity=.8] (2,0) |- (2,-0.3) -| (2+0.8,0) node[midway,below,scale=.7] {$w$};
+
+\draw[xshift=-2cm,draw=brown!50!orange,very thick,every node/.style={scale=.9}]
+(-0.8,0) -- (0,1.4) -- (0.8,0)
+(0,0);
+
+\draw[xshift=2cm,draw=brown!50!orange,very thick]
+(-0.8,0)
+-- (0,1.4)
+-- (0.8,0)
+(0,0) node[above right] {$f_c$}
+;
+
+\draw (-4,0) -- (4,0);
+\draw[->] (0,-0.5) -- (0,2.5);
+\end{scope}
+\end{tikzpicture}
+
+Αν μπορούσαμε να "κόψουμε" το ένα (π.χ. το αριστερό) κομμάτι του
+διαμορφωμένου σήματος, θα είχαμε την ίδια πληροφορία, αλλά θα
+καταναλώναμε μισό εύρος ζώνης. Για αυτό παρουσιάζουμε παρακάτω
+τη διαμόρφωση \textbf{SSB (Single Side Band)}.
+
+Η διαμόρφωση αυτή λειτουργεί καλύτερα σε ακουστικά και όχι
+οπτικά/σήματα δεδομένων, επειδή τα ακουστικά σήματα ξεκινούν από
+συχνότητες 20-600 Hz, και δεν έχουν DC κομμάτι:
+
+\begin{tikzpicture}[scale=1.2]
+\draw (-3,0) -- (3,0);
+\draw[->] (0,-1.5) -- (0,2.5);
+
+\def\s{1.4}
+
+\begin{scope}
+\clip (-3,0) rectangle (3,2); % clip below 0
+
+\draw[xshift=-\s cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates {(-0.8,0) (-0.5,0.2) (0,1.4) (0.5,0.2) (0.8,0)}
+;
+
+\draw[xshift=\s cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates {(-0.8,0) (-0.5,0.2) (0,1.4) (0.5,0.2) (0.8,0)}
+;
+\end{scope}
+
+\draw (-0.8+\s,0) node[below] {$f_a$};
+\draw (0.8+\s,0) node[below] {$f_b$};
+\draw (0.8-\s,0) node[below] {$-f_a$};
+\draw (-0.8-\s,0) node[below] {$-f_b$};
+
+\draw[dashed,opacity=.5,path fading=north] (\s-0.8,0) -- ++(0,2);
+\draw[dashed,opacity=.5,path fading=north] (-\s+0.8,0) -- ++(0,2);
+
+\draw (current bounding box.east) node[right] {ακουστικό σήμα};
+\end{tikzpicture}
+
+\pagebreak[4]
+Αρχικά, διαμορφώνουμε το σήμα κατά τα γνωστά, με
+\hyperref[dsb-sc]{DSB-SC}:\\*%
+\begin{tikzpicture}[scale=1]
+\draw (-7,0) -- (7,0);
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {DSB-SC};
+
+\def\s{3.5}
+\def\four{(-0.6,0) (-0.4,0.2) (0,1) (0.4,0.2) (0.6,0)}
+
+\begin{scope}
+\clip (-6,0) rectangle (6,2); % clip below 0
+
+\draw[xshift=-\s cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\draw[xshift=-\s cm-1.6 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+
+\draw[xshift=\s cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\draw[xshift=\s cm+1.6 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\end{scope}
+
+\draw (\s+0.8,0) node[below] {$f_c$};
+\draw (-\s-0.8,0) node[below] {$-f_c$};
+\end{tikzpicture}
+
+και χρησιμοποιούμε ένα Band Pass φίλτρο για να πάρουμε μόνο το δεξί
+μέρος του διαμορφωμένου φάσματος. Το γεγονός ότι χρησιμοποιούμε
+το δεξί κομμάτι οφείλεται στην ονομασία
+\textbf{USB (Upper Side Band)} της διαδικασίας
+(δεν έχει σχέση με το USB του υπολογιστή!):
+
+\begin{tikzpicture}[scale=1]
+\filldraw[fill=blue!40!cyan!80!black,fill opacity=.3]
+(5-0.6,0) -- ++(0.1,1.2) -- ++(1.2,0) -- ++(0.1,-1.2);
+\filldraw[fill=blue!40!cyan!80!black,fill opacity=.3,xscale=-1]
+(5-0.6,0) -- ++(0.1,1.2) -- ++(1.2,0) -- ++(0.1,-1.2);
+
+\draw (-7,0) -- (7,0);
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {DSB-SC};
+
+\def\s{3.5}
+\def\four{(-0.6,0) (-0.4,0.2) (0,1) (0.4,0.2) (0.6,0)}
+
+\begin{scope}
+\clip (-6,0) rectangle (6,2); % clip below 0
+
+\draw[xshift=-\s cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\draw[xshift=-\s cm-1.6 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+
+\draw[xshift=\s cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\draw[xshift=\s cm+1.6 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\end{scope}
+
+\draw (\s+0.8,0) node[below] {$f_c$};
+\draw (-\s-0.8,0) node[below] {$-f_c$};
+
+\begin{scope}[yshift=-5cm]
+\draw (-7,0) -- (7,0);
+\draw[->] (0,-1.5) -- (0,2.5);
+
+\begin{scope}
+\clip (-6,0) rectangle (6,2); % clip below 0
+
+\draw[xshift=-\s cm-1.6 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+
+\draw[xshift=\s cm+1.6 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\end{scope}
+
+\draw (\s+0.8,0) node[below] {$f_c$};
+\draw (-\s-0.8,0) node[below] {$-f_c$};
+\end{scope}
+\end{tikzpicture}
+
+Έτσι πήραμε το τελικό διαμορφωμένο σήμα. Για την αποδιαμόρφωση,
+πολλαπλασιάζουμε ως γνωστόν με το φέρον \( \cos 2πf_c t \), και
+παίρνουμε γραφικά τις συνελίξεις:
+
+\begin{tikzpicture}[scale=1]
+\filldraw[fill=blue!40!cyan!80!black,fill opacity=.15]
+(-1.6,0) -- ++(0.1,1.2) -- ++(3,0) -- ++(0.1,-1.2);
+
+\draw (-7,0) -- (7,0);
+\draw[->] (0,-1) -- (0,2.5);
+
+\def\s{2.5}
+\def\four{(-0.6,0) (-0.4,0.2) (0,1) (0.4,0.2) (0.6,0)}
+
+\begin{scope}
+\clip (-6,0) rectangle (6,2); % clip below 0
+
+\draw[xshift=-0.8 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+\draw[xshift=0.8 cm,draw=brown!70!orange,very thick] plot[smooth]
+coordinates \four
+;
+
+\draw[xshift=-2*\s cm,draw=brown!50!orange!80!cyan,very thick] plot[smooth]
+coordinates \four
+;
+
+\draw[xshift=2*\s cm,draw=brown!50!orange!80!cyan,very thick] plot[smooth]
+coordinates \four
+;
+\end{scope}
+
+\draw[ultra thick,->] (\s+0.4,0) node[below] {$f_c$} node[circle,fill,inner sep=2pt] {} -- ++(0,1.5);
+\draw[ultra thick,->] (-\s-0.4,0) node[below] {$-f_c$} node[circle,fill,inner sep=2pt] {} -- ++(0,1.5);
+\end{tikzpicture}
+
+που με ένα απλό Low Pass Filter μάς δίνουν το αρχικό ακουστικό σήμα.
+
+\vbox{
+	Αν και παραστήσαμε αυτές τις αλλαγές στο πεδίο της συχνότητας, τώρα
+	πρέπει να τις υλοποιήσουμε. Η δυσκολία της υλοποίησης έγκειται στο
+	ότι το φίλτρο που αποκόπτει το επάνω μέρος πρέπει να έχει πολύ
+	μικρή ζώνη μετάβασης. Αν μελετήσουμε την τυπική απόκριση συχνότητας 
+	ενός band pass filter:
+
+	\begin{tikzpicture}[scale=1.9]
+	\draw[->] (0,-0.5) -- (0,2);
+	\draw[->] (-0.5,0) -- (6,0);
+	
+	\def\four{(-0.6,0) (-0.4,0.2) (0,1) (0.4,0.2) (0.6,0)}
+	
+	\begin{scope}
+	\clip (0,0) rectangle (6,2); % clip below 0
+	
+	\draw[xshift=2 cm,draw=brown!70!orange,very thick] plot[smooth]
+	coordinates \four;
+	\draw[xshift=4 cm,draw=brown!70!orange,very thick] plot[smooth]
+	coordinates \four;
+	\end{scope}
+	
+	\draw[dashed] (2+0.6,-0.1) node[below,xshift=-3mm,scale=.9] {$f_c-f_a$} -- ++(0,3);
+	\draw[dashed,opacity=.5] (3,-0.1) -- ++(0,0.3);
+	\draw (3,-0.1) node[below] {$f_c$};
+	\draw[dashed] (4-0.6,-0.1) node[below,xshift=3mm,scale=.9] {$f_c+f_a$} -- ++(0,3);
+	
+	\draw[very thick,blue!50!cyan]
+	(1,0) -- plot[smooth,tension=0.5]
+	coordinates {(2+0.6,0) (2+0.6+0.3,0.2) (4-0.6,1.2) (4,1.34) (4+0.6,1.2) ({-0.3+4+0.6+(4-0.6)-(2+0.6))},0.2) ({4+0.6+(4-0.6)-(2+0.6))},0)}
+	-- (5.9,0)
+	(4,1.3) node[above,scale=.9] {BPF};
+	;
+	
+	\draw[<->] (2+0.6,2) -- (4-0.6,2) node[above,midway,scale=.9] {600 Hz};
+	\draw (3,2.5) node[above,scale=.77,green!40!black,align=center] {ζώνη\\μετάβασης};
+	\end{tikzpicture}
+}
+
+
+Βλέπουμε ότι η ζώνη μετάβασης είναι αρκετά στενή, και η υλοποίηση
+ενός τέτοιου φίλτρου γίνεται όλο και δυσκολότερη όσο αυξάνεται
+η συχνότητα \( f_c \). Να σημειωθεί ότι το πλάτος της ζώνης μετάβασης
+χαρακτηρίζεται από τη σχέση \( \frac{2f_a}{f_c} \), η οποία
+έχει τιμή 5\% για απλά αναλογικά κυκλωματικά φίλτρα.
+
+Για παράδειγμα, αν ο ήχος μας ξεκινάει από 300 Hz και θέλουμε να
+μεταδώσουμε σε μια συχνότητα 1 Mhz, τότε η ζώνη μετάβασης έχει
+πλάτος \( \frac{2\cdot 300}{10^6}
+= 6\cdot10^{-4} = 0.06\% \), που είναι κάτι πολύ μικρό για τις δυνατότητες των φίλτρων.
+
+\subsubsection{Μία τεχνική αποκοπής συχνότητας}
+
+Για να λύσουμε το παραπάνω πρόβλημα, σκεφτόμαστε αν μπορούμε να
+μετακινήσουμε ελαφρά το σήμα μας στη συχνότητα, ουσιαστικά
+αυξάνοντας τη συχνότητα \( f_a \). Πράγματι, αυτό μπορεί να γίνει
+εφαρμόζοντας την προηγούμενη διαδικασία (διαμόρφωση DSB-SC + BPF),
+αλλά αυξάνοντας τη
+συχνότητα μόνο κατά κάποια μικρή τιμή, π.χ. 10 kHz, και όχι αμέσως
+1 Mhz:
+
+\begin{tikzpicture}[scale=.7]
+\def\bw{0.6}
+\def\A{1}
+
+\def\fa{3+\bw}
+\def\fb{5.8}
+\def\tz{0.2}
+
+\draw[dashed,brown] (3+\bw,0) -- ++(0,3);
+\draw[dashed,brown] (4.6-\bw,0) -- ++(0,3);
+\draw[brown,<->] (3+\bw,2.5) -- (4.6-\bw,2.5)
+node[right,brown!60!black,scale=.7] {600 Hz};
+
+\filldraw[fill=blue!40!cyan!80!black,fill opacity=.15] plot[smooth,tension=0.1] coordinates {
+	(\fa,0) (\fa+\tz,1.2) (\fb-\tz,1.2) (\fb,0)
+};
+\draw ({(\fa+\fb)/2},1.2) node[above,scale=.9,yshift=1mm] {BPF1};
+
+\draw[->] (-6,0) -- (6,0) node[below] {$f$};
+\draw (0,-1) -- (0,3);
+
+\def\spectrum{plot[smooth,tension=1] coordinates {(-\bw,0) (0,\A) (+\bw,0)}}
+
+\draw[very thick,blue!50!cyan,xshift=-4.6cm] \spectrum;
+\draw[very thick,blue!50!cyan,xshift=-3cm] \spectrum;
+
+\draw[very thick,blue!50!cyan,xshift=3cm] \spectrum;
+\draw[very thick,blue!50!cyan,xshift=4.6cm] \spectrum;
+
+\draw (3.8,0) node[below,scale=.9] {10 kHz} ++ (45+90:0.1) -- ++(-45:0.2);
+
+\draw[very thick, brown!50!gray!20!black,>->] (6.5,0.5) -- ++(1,0);
+
+\begin{scope}[xshift=12cm]
+\draw[->] (-4,0) -- (4,0) node[below] {$f$};
+\draw (0,-1) -- (0,3) node[right] {(1)};
+
+\draw[very thick,blue!50!cyan,xshift=-3cm] \spectrum;
+\draw[very thick,blue!50!cyan,xshift=3cm] \spectrum;
+
+\draw (-2.25,0) node[below,scale=.8] {-10 kHz} ++ (90+45:0.1) -- ++(-45:0.2);
+\draw (2.25,0) node[below,scale=.8] {10 kHz} ++ (45+90:0.1) -- ++(-45:0.2);
+\end{scope}
+\end{tikzpicture}
+
+Πράγματι, το νέο αυτό φίλτρο έχει ζώνη μετάβασης \(
+ \frac{2\cdot300}{10k} = 6\% \) που είναι όντως υλοποιήσιμο!
+
+Συνεχίζουμε την ίδια διαδικασία, διαμορφώνοντας και 
+μετακινώντας το σήμα μας αυτήν τη
+φορά από τα 10 kHz μέχρι τα 100 kHz:
+
+\begin{tikzpicture}[scale=.7]
+\def\bw{0.55}
+\def\A{1}
+
+\def\fa{3+\bw}
+\def\fb{5.8}
+\def\tz{0.2}
+
+\draw[dashed,brown] (3+\bw,0) -- ++(0,3);
+\draw[dashed,brown] (4.6-\bw,0) -- ++(0,3);
+\draw[brown,<->] (3+\bw,2.5) -- (4.6-\bw,2.5)
+node[right,brown!60!black,scale=.7] {$2\cdot10300$ Hz};
+
+\filldraw[fill=blue!60!cyan!80!black,fill opacity=.15] plot[smooth,tension=0.1] coordinates {
+	(\fa,0) (\fa+\tz,1.2) (\fb-\tz,1.2) (\fb,0)
+};
+\draw ({(\fa+\fb)/2},1.2) node[above,scale=.9,yshift=1mm] {BPF2};
+
+\draw[->] (-6,0) -- (6,0) node[below] {$f$};
+\draw (0,-1) -- (0,3);
+
+\def\spectrum{plot[smooth,tension=1] coordinates {(-\bw,0) (0,\A) (+\bw,0)}}
+
+\draw[very thick,blue!70!cyan,xshift=-4.6cm] \spectrum;
+\draw[very thick,blue!70!cyan,xshift=-3cm] \spectrum;
+
+\draw[very thick,blue!70!cyan,xshift=3cm] \spectrum;
+\draw[very thick,blue!70!cyan,xshift=4.6cm] \spectrum;
+
+\draw (3.8,0) node[below,scale=.9] {100 kHz} ++ (45+90:0.1) -- ++(-45:0.2);
+
+\draw[very thick, brown!50!gray!20!black,>->] (6.5,0.5) -- ++(1,0);
+
+\begin{scope}[xshift=12cm]
+\draw[->] (-4,0) -- (4,0) node[below] {$f$};
+\draw (0,-1) -- (0,3) node[right] {(2)};
+
+\draw[very thick,blue!70!cyan,xshift=-3cm] \spectrum;
+\draw[very thick,blue!70!cyan,xshift=3cm] \spectrum;
+
+\draw (2.3,0) node[below,scale=.8] {100 kHz} ++ (45+90:0.1) -- ++(-45:0.2);
+\end{scope}
+\end{tikzpicture}
+
+Με ζώνη μετάβασης \( \frac{2\cdot 10600}{100\cdot 10^3} 
+= 21.2 \% \), που είναι απόλυτα υλοποιήσιμη.
+
+Και ξανά για 100 kHz σε 1 Mhz:
+
+\begin{tikzpicture}[scale=.7]
+\def\bw{0.55}
+\def\A{1}
+
+\def\fa{3+\bw}
+\def\fb{5.8}
+\def\tz{0.2}
+
+\draw[dashed,brown] (3+\bw,0) -- ++(0,3);
+\draw[dashed,brown] (4.6-\bw,0) -- ++(0,3);
+\draw[brown,<->] (3+\bw,2.5) -- (4.6-\bw,2.5)
+node[right,brown!60!black,scale=.7] {$2\cdot110300$ Hz};
+
+\filldraw[fill=blue!80!cyan!80!black,fill opacity=.15] plot[smooth,tension=0.1] coordinates {
+	(\fa,0) (\fa+\tz,1.2) (\fb-\tz,1.2) (\fb,0)
+};
+\draw ({(\fa+\fb)/2},1.2) node[above,scale=.9,yshift=1mm] {BPF3};
+
+\draw[->] (-6,0) -- (6,0) node[below] {$f$};
+\draw (0,-1) -- (0,3);
+
+\def\spectrum{plot[smooth,tension=1] coordinates {(-\bw,0) (0,\A) (+\bw,0)}}
+
+\draw[very thick,blue!90!cyan,xshift=-4.6cm] \spectrum;
+\draw[very thick,blue!90!cyan,xshift=-3cm] \spectrum;
+
+\draw[very thick,blue!90!cyan,xshift=3cm] \spectrum;
+\draw[very thick,blue!90!cyan,xshift=4.6cm] \spectrum;
+
+\draw (3.8,0) node[below,scale=.9] {1000 kHz} ++ (45+90:0.1) -- ++(-45:0.2);
+
+\draw[very thick, brown!50!gray!20!black,>->] (6.5,0.5) -- ++(1,0);
+
+\begin{scope}[xshift=12cm]
+\draw[->] (-4,0) -- (4,0) node[below] {$f$};
+\draw (0,-1) -- (0,3) node[right] {(3)};
+
+\draw[very thick,blue!90!cyan,xshift=-3cm] \spectrum;
+\draw[very thick,blue!90!cyan,xshift=3cm] \spectrum;
+
+\draw (-2.25,0) node[below,scale=.8] {-1 MHz} ++ (90+45:0.1) -- ++(-45:0.2);
+\draw (2.25,0) node[below,scale=.8] {1 MHz} ++ (45+90:0.1) -- ++(-45:0.2);
+\end{scope}
+\end{tikzpicture}
+
+Με ζώνη μετάβασης \( \frac{2\cdot 110600}{10^6} 
+= 22.12\%\), που είναι και αυτό υλοποιήσιμο φίλτρο, και έχουμε φτάσει
+στο ζητούμενο, διαμορφωμένο κατά USB, σήμα.
+
+Συνοπτικά, το κύκλωμα αποτελείται από μια σειρά
+πολλαπλαστικών διαμορφωτών και φίλτρων:
+
+\begin{circuitikz}
+	\draw (1,0) node[rectangle,draw,minimum width=8mm,minimum height=8mm] (mult1) {}
+	node[scale=1.5] {$\times$};
+	\draw (3,0) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (bpf1) {}
+	node[scale=1] {BPF\textsubscript{1}};
+	\draw (6.5,0) node[rectangle,draw,minimum width=8mm,minimum height=8mm] (mult2) {}
+	node[scale=1.5] {$\times$};
+	\draw (8.5,0) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (bpf2) {}
+	node[scale=1] {BPF\textsubscript{2}};
+	\draw (12,0) node[rectangle,draw,minimum width=8mm,minimum height=8mm] (mult3) {}
+	node[scale=1.5] {$\times$};
+	\draw (14,0) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (bpf3) {}
+	node[scale=1] {BPF\textsubscript{3}};
+	
+	\draw (mult1) ++(0,-2) node[xshift=4.9mm,oscillator] (osc1) {} node[right,xshift=4.9mm] {10 kHz};
+	\draw (mult2) ++(0,-2) node[xshift=4.9mm,oscillator] (osc2) {} node[right,xshift=4.9mm] {100 kHz};
+	\draw (mult3) ++(0,-2) node[xshift=4.9mm,oscillator] (osc3) {} node[right,xshift=4.9mm] {1 MHz};
+	
+	\draw[<-] (mult1) -- ++(-2,0) node[above,midway] {$m(t)$};
+	\draw[->] (osc1.north) -- (mult1);
+	\draw[->] (osc2.north) -- (mult2);
+	\draw[->] (osc3.north) -- (mult3);
+	\draw[->] (mult1) -- (bpf1);
+	\draw[->] (bpf1.east) node[above right] {(1)} -- (mult2);
+	\draw[->] (mult2) -- (bpf2);
+	\draw[->] (bpf2.east) node[above right] {(2)} -- (mult3);
+	\draw[->] (mult3) -- (bpf3);
+	\draw[->] (bpf3.east) -- ++ (1,0);
+\end{circuitikz}
+
+Και, αν θέλουμε, μειώνουμε τη συχνότητα του τελευταίου ταλαντωτή
+ώστε το σήμα να πέσει ακριβώς επάνω στην \( f_c \) του φέροντος.
+
+\subsubsection{Μελέτη στο πεδίο του χρόνου}
+Ας μελετήσουμε και τις χρονικές εξισώσεις του LSB.
+
+Για ευκολία, θεωρούμε ότι το σήμα μας είναι ένα ημίτονο:
+\[
+m(t) = A_m \cos 2π f_m(t) % ωχ! ένα συνημίτονο αντί για ημίτονο!
+\]
+και έχουμε και το φέρον:
+\[
+A_c\cos 2πf_c t
+\]
+με \( f_c\gg f_m \).
+
+Από τη διαμόρφωση \hyperref[dsb-sc]{DSB-SC} θυμόμαστε ότι η έξοδος του διαμορφωτή είναι
+το σήμα πολλαπλασιασμένο με το φέρον:
+\[
+s_{\mathrm{DSB-SC}} = \frac{1}{2}
+A_cA_m\cos\left[ 2π(f_c+f_m)t \right] + \frac{1}{2}A_cA_m\cos[2π(f_c-f_m)t]
+\]
+
+\begin{tikzpicture}[scale=1]
+\draw (-6,0) -- (6,0);
+\draw (0,-1) -- (0,3);
+
+\def\a{1.4}
+
+\def\fa{-4}
+\def\fb{4}
+\def\tz{0.2}
+\filldraw[fill=blue!80!cyan!80!black,fill opacity=.12]
+(\fa,0) -- (\fa+\tz,1.8) -- (\fb-\tz,1.8) node[above left,opacity=1] {LSB} -- (\fb,0);
+\def\fa{4}
+\def\fb{\fa+2}
+\filldraw[fill=brown!80!orange!80!black,fill opacity=.25,path fading=east]
+(\fa,0) -- (\fa+\tz,1.8) -- ++(2,0) -- ++(0,-1.8);
+\draw (\fa+\tz,1.8) node[above right,opacity=1] {USB};
+\filldraw[fill=brown!80!orange!80!black,fill opacity=.25,xscale=-1,path fading=west]
+(\fa,0) -- (\fa+\tz,1.8) -- ++(2,0) -- ++(0,-1.8);
+
+
+\draw[->,ultra thick,blue!80!brown] (-5,0) node[below] {$-f_c-f_m$} -- ++(0,\a);
+\draw[->,ultra thick,blue!80!brown] (-3,0) node[below] {$-f_c+f_m$} -- ++(0,\a);
+\draw[->,ultra thick,blue!80!brown] (3,0) node[below] {$-f_c-f_m$} -- ++(0,\a);
+\draw[->,ultra thick,blue!80!brown] (5,0) node[below] {$-f_c+f_m$} -- ++(0,\a);
+
+\draw[dashed] (-6,\a) -- (6,\a) node[midway,below right,scale=.8] {$\sfrac{1}{2}A_cA_m$};
+\end{tikzpicture}
+
+και για να εφαρμόσουμε USB παίρνουμε ένα υψιπερατό/ζωνοπερατό φίλτρο,
+όπως φαίνεται στο διάγραμμα:
+\begin{align*}
+	s_{\mathrm{USSB}}(t) &= \frac{1}{2} A_cA_m\cos[2π(f_c+f_m)t]
+	\\ &= \frac{1}{2}A_cA_m\cos 2πf_ct - \frac{1}{2}A_cA_m\sin2πf_ct \sin 2πf_m t
+\end{align*}
+και αντίστοιχα για LSB, παίρνουμε ένα χαμηλοπερατό φίλτρο για την κάτω πλευρική ζώνη:
+\[
+s_{\mathrm{LSSB}} =
+\frac{1}{2}A_cA_m\cos 2πf_ct + \frac{1}{2}A_cA_m\sin2πf_ct \sin 2πf_m t
+\]
+
+Επομένως, μπορούμε να κατασκευάσουμε έναν διαμορφωτή, ο οποίος αφαιρεί ουσιαστικά την
+κάτω πλευρική ζώνη, με βάση τους παραπάνω τύπους:
+
+\begin{circuitikz}[scale=1]
+	\draw (0,-0.75) node[draw,rectangle] (ps1) {$-90\degree$};
+	\draw (0,2) node[draw,rectangle,scale=2,outer sep=0] (m1) {$\times$};
+	\draw (0,-2) node[draw,rectangle,scale=2, outer sep=0] (m2) {$\times$};
+	\draw (2,0) node[oscillator,xshift=4.9mm] (osc) {};
+	\draw (4,0) node[draw,circle,scale=1.2,thick] (sum) {$\sum$};
+	
+	\draw[->] (osc.west) -| (m1);
+	\draw[->] (osc.west) -| (ps1) -- (m2);
+	\draw[->] (m1) -| node[above right] {(1)} (sum);
+	\draw[->] (m2) -| node[below right] {(2)} (sum.south) node[yshift=-2mm,right] {$\pm$};
+	\draw[->] (sum) -- ++(1.5,0) node[right]
+	{$s_{\mathrm{USSB}}(t)\Big/s_{\mathrm{LSSB}}(t)$};
+	\draw[<-] (m1) -- ++(-5,0) node[above,midway] {$m(t)=A\cos2πf_m(t)$} node[pos=.5] (p) {};
+	\draw (p |- 0,-2) node[draw,rectangle] (ps2) {$-90\degree$};
+	\draw[->] (p.center) node[circ] {} -- (ps2) |- (m2);
+	
+	\path (ps1.south) -- (m2.north) node[midway,right,scale=.8] {$\sfrac{1}{2}A_c\sin2πf_ct$};
+\end{circuitikz}
+
+Αυτός ο υπολογισμός πραγματοποιήθηκε για έναν απλό τόνο. Ας τον εφαρμόσουμε ξανά για μια
+περιοδική κυματομορφή (δηλαδή ένα άθροισμα ημιτόνων):
+\[
+m(t) = \sum_{n} a_n \cos(2πfnt)
+\]
+
+και τότε θα προκύψει π.χ.
+\[
+s_{\mathrm{USSB}}(t)
+= \frac{1}{2} A_cA_m \cos 2π f_c t + \sum_n a_n\cos(2πfnt)
+-\frac{1}{2}A_cA_m \sin 2πf_ct\sum_n a_n\sin(2πfnt)
+\]
+και το κύκλωμα διαμόρφωσης θα λειτουργεί ακριβώς με τον ίδιο τρόπο. Ακόμα και η περιστροφή
+φάσης κατά \( 90\degree \), είναι ουσιαστικά ένα κύκλωμα καθυστέρησης στο χρόνο, που
+ονομάζεται \textit{μετατροπέας φάσης (phase shifter)}.
+
+Στη γενική περίπτωση, ορίζουμε ως \textbf{μετασχηματισμό Hilbert} τη στροφή της φάσης του
+σήματός μας κατά \( 90\degree \), που μπορεί να πραγματοποιηθεί ακόμα και για μη περιοδικά
+σήματα.
+
+\begin{circuitikz}[scale=0.7,every node/.style={scale=.7}]
+	\draw (0,-0.75) node[draw,rectangle] (ps1) {$-90\degree$};
+	\draw (0,2) node[draw,rectangle,scale=2,outer sep=0] (m1) {$\times$};
+	\draw (0,-2) node[draw,rectangle,scale=2, outer sep=0] (m2) {$\times$};
+	\draw (2,0) node[oscillator,xshift=4.9mm] (osc) {};
+	\draw (4,0) node[draw,circle,scale=1.2,thick] (sum) {$\sum$};
+	
+	\draw[->] (osc.west) -| (m1);
+	\draw[->] (osc.west) -| (ps1) -- (m2);
+	\draw[->] (m1) -| (sum);
+	\draw[->] (m2) -| (sum.south) node[yshift=-2mm,right] {$\pm$};
+	\draw[->] (sum) -- ++(1.5,0) node[right]
+	{$s_{\mathrm{USSB}}(t)\Big/s_{\mathrm{LSSB}}(t)$};
+	\draw[<-] (m1) -- ++(-5,0) node[above,midway] {$m(t)=A\cos2πf_m(t)$} node[pos=.5] (p) {};
+	\draw (p |- 0,-2) node[draw,rectangle] (ps2) {$-90\degree$};
+	\draw[->] (p.center) node[circ] {} -- (ps2) -- (m2);
+	\draw (ps2.north) node[above,fill=white,draw=white!90!black,scale=1.4,fill opacity=.8,text opacity=1,outer sep=2pt] {Hilbert};
+	
+	\path (ps1.south) -- (m2.north) node[midway,right,scale=.8] {$\sfrac{1}{2}A_c\sin2πf_ct$};
+\end{circuitikz}
+
+
+\subsubsection{Μετασχηματισμός Hilbert}
+\begin{defn}{Μετασχηματισμός Hilbert}{}
+	Ο \textbf{μετασχηματισμός Hilbert} είναι ένα \textbf{φίλτρο} με συνάρτηση μεταφοράς:
+	\[
+	\mathlarger{H(f) = -j \sgn f}
+	\]
+\end{defn}
+Θυμόμαστε τη συνάρτηση \( \sgn \): \begin{tikzpicture}[scale=.5,baseline]
+\draw (-2,0) -- (2,0);
+\draw (0,-2) -- (0,2);
+
+\draw[red!60!orange!90!blue,ultra thick] (-2,-1) -- (0,-1) (0,1) -- (2,1) node[above] {$\sgn(f)$};
+\filldraw[red!50!black,fill=white] (0,-1) circle (3pt) (0,1) circle(3pt);
+%\filldraw[] (0,0) circle (2pt);
+\end{tikzpicture}
+
+Έχει κρουστική απόκριση:
+\[
+h(t) = \frac{1}{πt}
+\]
+
+Ο μετασχηματισμός βάζει ένα j και αλλάζει το πρόσημο της συνάρτησης.
+Πιο συγκεκριμένα, μεταβάλλει το σήμα κατά \( -90\degree \) στις θετικές συχνότητες, και
+\( 90\degree \) στις αρνητικές συχνότητες.
+Για παράδειγμα:
+
+\begin{tikzpicture}[scale=1]
+\draw[draw=blue!50!cyan,very thick]
+(-0.8,0)-- (0,1.4)-- (0.8,0);
+\draw (0,1.4) node[above right] {$M(0)$};
+
+\draw[->] (-2,0) -- (2,0) node[below] {$f$};
+\draw (0,-2.5) -- (0,2.5) node[right] {$M(f)$} node[left] {Re};
+
+\draw[>->,very thick, black]
+(2.5,0) -- ++(1.5,0) node[above,midway] {Μ.H.};
+
+\begin{scope}[xshift=7.5cm]
+\draw[shading=color wheel,opacity=.2] (1.2,0,0) -- (0,0,-3) -- (0,0,0);
+\draw[shading=color wheel,opacity=.2] (-1.2,0,0) -- (0,0,3) -- (0,0,0);
+\draw[draw=blue!50!cyan,very thick,fill=red,fill opacity=.1,postaction={pattern=north east lines,opacity=.2}]
+(-1.2,0,0) -- (0,0,3) -- (0,0,0);
+\draw[draw=blue!50!cyan,very thick,fill=red,fill opacity=.1,postaction={pattern=north east lines,opacity=.2}]
+(1.2,0,0) -- (0,0,-3) -- (0,0,0);
+
+\draw (-1.2,0) node[above] {$-w$};
+\draw (1.2,0) node[below] {$w$};
+\draw (0,0) node[above left] {$0$};
+
+\draw[->] (-3,0) -- (3,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\draw[path fading=east] (0,0,0) -- (0,0,-5);
+\end{scope}
+\end{tikzpicture}
+
+Ο μετασχηματισμός Hilbert είναι ένας Wide-Band Phase Shifter (WBPS). Και εδώ βρίσκεται το
+πρόβλημα. Ο μετασχηματισμός Hilbert είναι ένα ιδανικό φίλτρο που δεν μπορεί να εφαρμοστεί
+στην πραγματικότητα:
+
+\begin{tikzpicture}[scale=1]
+\draw[ultra thick,blue!70!green] (-3,0,2) -- (0,0,2);
+\draw[ultra thick,blue!70!green] (0,0,-2) -- (3,0,-2)  node[pos=.5] (p1) {};
+\fill[blue!70!green] (0,0,-2) circle(2pt) (0,0,2) circle(2pt);
+
+\def\act{red!80!yellow}
+\begin{scope}
+\clip (0,0,2) rectangle (0,0,-2);
+\draw[very thick,\act,mark position=0.38(p2)] plot[smooth,tension=1] coordinates
+{(-3,0,2) (0,0,1.8) (0,0,-1.8) (3,0,-2)};
+\end{scope}
+\draw[very thick,\act] (3,0,-1.8) -- (0,0,-1.8);
+\draw[very thick,\act] (0,0,1.8) -- (-3,0,1.8);
+
+\draw[blue!70!green,<-] (p1.center) to[bend left] ++(0.5,1) node[right] {ιδανική απόκριση};
+\draw[\act!80!black,<-] (p2) to[bend right] ++(0.5,-1) node[right] {πραγματική απόκριση};
+
+\draw (0,0) node[above left] {$0$};
+
+\draw[->] (-3,0) -- (3,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\draw[path fading=east] (0,0,0) -- (0,0,-5);
+\end{tikzpicture}
+
+Σε ακουστικά σήματα οι ατέλειες αυτές μπορούν να παραβλεφθο, αλλά σε άλλα σήματα μπορεί να
+υπάρχει αισθητή παραμόρφωση.
+
+Επομένως, και οι δύο διαμορφωτές παρουσιάζουν προβλήματα, ο πρώτος στην υλοποίηση του
+φίλτρου, και ο δεύτερος στην υλοποίηση του phase shifter.
+
+\subsubsection{Επιστροφή στο πεδίο των συχνοτήτων}
+Θα αναλύσουμε το παραπάνω κύκλωμα στη συχνότητα:
+
+\begin{circuitikz}[scale=0.9,every node/.style={scale=.9}]
+	\draw (0,-0.75) node[draw,rectangle] (ps1) {$-90\degree$};
+	\draw (0,2) node[draw,rectangle,scale=2,outer sep=0] (m1) {$\times$};
+	\draw (0,-2) node[draw,rectangle,scale=2, outer sep=0] (m2) {$\times$};
+	\draw (2,0) node[oscillator,xshift=4.9mm] (osc) {};
+	\draw (4,0) node[draw,circle,scale=1.2,thick] (sum) {$\sum$};
+	
+	\draw[->] (osc.west) -| (m1);
+	\draw[] (osc.west) -| (ps1);
+	\draw[->,orange] (ps1) -- (m2);
+	\draw[->,orange] (m1) -| node[above right] {(1)} (sum);
+	\draw[->,magenta!70!cyan] (m2) -| node[below right] {(2)} (sum.south) node[yshift=-2mm,right] {$\pm$};
+	\draw[->,black!80!brown] (sum) -- ++(1.5,0) node[right]
+	{$s_{\mathrm{USSB}}(t)\Big/s_{\mathrm{LSSB}}(t)$};
+	\draw[<-,draw=blue!70!cyan] (m1) -- ++(-5,0) node[above,midway] {$m(t)=A\cos2πf_m(t)$} node[pos=.5] (p) {};
+	\draw[blue!70!green] (p |- 0,-2) node[draw,rectangle] (ps2) {$-90\degree$};
+	\draw[blue!70!cyan] (p.center) node[circ] {} -- (ps2);
+	\draw[->,orange!50!green] (ps2) -- (m2);
+	
+	\path (ps1.south) -- (m2.north) node[midway,right,scale=.8] {$\sfrac{1}{2}A_c\sin2πf_ct$};
+\end{circuitikz}
+
+Θυμόμαστε το σήμα κατά SSB:
+\[
+s_{\mathrm{USSB}}(t) = \frac{1}{2}A_c m(t) \cos 2πf_c t - \frac{1}{2}A_c \hat m(t)
+\sin 2πf_c t
+\]
+
+και βλέπουμε στο πεδίο των συχνοτήτων:
+\\*
+\begin{tikzpicture}[scale=1]
+\draw[ultra thick,blue!70!cyan] (-1,0) -- (0,1.6) -- (1,0);
+
+\draw (-1.2,0) node[below] {$-w$};
+\draw (1.2,0) node[below] {$w$};
+\draw (0,0) node[above left] {$0$};
+
+\draw[->] (-3,0) -- (3,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re} node[below left,blue!70!cyan] {$M(f)$};
+
+\begin{scope}[xshift=8cm]
+\draw[ultra thick,blue!70!green] (-3,0,2) -- (0,0,2);
+\draw[ultra thick,blue!70!green] (0,0,-2) -- (3,0,-2);
+\fill[blue!70!green] (0,0,-2) circle(2pt) (0,0,2) circle(2pt);
+
+\draw (0,0) node[above left] {$0$};
+
+\draw[->] (-3,0) -- (3,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re} node[below left,blue!70!green] {$H(f)$};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\draw[path fading=east] (0,0,0) -- (0,0,-5);
+\end{scope}
+
+\begin{scope}[yshift=-6cm]
+\draw[ultra thick,orange!50!green] (-1,0,0) -- (0,0,2);
+\draw[ultra thick,orange!50!green] (0,0,-2) -- (1,0,0);
+\fill[orange!50!green] (0,0,-2) circle(2pt) (0,0,2) circle(2pt);
+
+\draw (-1,0) node[above] {$-w$};
+\draw (1,0) node[below] {$w$};
+\draw (0,0) node[above left] {$0$};
+
+\draw[->] (-3,0) -- (3,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re} node[below left,orange!50!green] {$H(f)M(f)$};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\draw[path fading=east] (0,0,0) -- (0,0,-5);
+
+\begin{scope}[xshift=8cm]
+\draw[ultra thick,orange!50!red,->] (1.6,0,0) -- ++(0,0,-3);
+\draw[ultra thick,orange!50!red,->] (-1.6,0,0) -- ++(0,0,3);
+\fill[orange!50!red] (1.6,0,0) circle(2pt) (-1.6,0,0) circle(2pt);
+
+\draw (-1.6,0) node[above] {$-f_c$};
+\draw (1.6,0) node[below] {$f_c$};
+\draw (0,0) node[above left] {$0$};
+
+\draw[->] (-3,0) -- (3,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re} node[below left,orange!50!red]
+{$\mathrm{MF}\left[\sin(2πf_ct)\right]$};
+\draw[->] (0,0,0) -- (0,0,5) node[below right] {Im};
+\draw[path fading=east] (0,0,0) -- (0,0,-5);
+\end{scope}
+\end{scope}
+\end{tikzpicture}
+
+Μετά από τη συνέλιξη του \( H(f)M(f) \) με το μετασχηματισμό του \( \sin(2πf_ct) \),
+πολλαπλασιάζονται τα φανταστικά μέρη, \( j\cdot j = -1 \), επομένως
+τα σήματα που πηγαίνουν στον αθροιστή επιστρέφουν στο πραγματικό επίπεδο και μοιάζουν
+κάπως έτσι:
+
+\begin{tikzpicture}[scale=0.8]
+\draw[ultra thick,magenta!70!cyan,xshift=-3cm] (-1,0) -- (0,1.6) -- (0,-1.6) -- (1,0);
+\draw[ultra thick,magenta!70!cyan,xshift=+3cm] (-1,0) -- (0,1.6) -- (0,-1.6) -- (1,0) node[midway,below right] {(1)};
+\draw[ultra thick,orange,xshift=-3cm,scale=1.09] (-1,0) -- (0,1.6) -- (1,0);
+\draw[ultra thick,orange,xshift=3cm,scale=1.09] (-1,0) -- (0,1.6) -- (1,0) node[midway,above right] {(2)};
+
+\draw (-3,0) node[below] {$-f_c$};
+\draw ( 3,0) node[below] {$f_c$};
+
+\draw[->] (-6,0) -- (6,0) node[below] {$f$};
+\draw[->] (0,-2.5) -- (0,2.5) node[right] {Re} node[below left]
+{$\mathrm{MF}\left(m(t)\sin(2πf_ct)\right)$};
+\end{tikzpicture}
+
+Και τελικά, καθώς προστίθενται, ουσιαστικά αφαιρείται η κάτω πλευρική ζώνη, και παραμένει
+μόνο η επάνω πλευρική ζώνη:
+
+\begin{tikzpicture}[scale=0.8]
+\draw[ultra thick,black!80!brown,xshift=-3cm] (-1,0) -- (-0.5,1.6) -- (0,0);
+\draw[ultra thick,black!80!brown,xshift=+3cm] (1,0) -- (0.5,1.6) -- (0,0);
+
+\draw (-3,0) node[below] {$-f_c$};
+\draw ( 3,0) node[below] {$f_c$};
+
+\draw[->] (-6,0) -- (6,0) node[below] {$f$};
+\draw[->] (0,-1.5) -- (0,2.5) node[right] {Re} node[below left]
+{$S_{\mathrm{USSB}}(f)$};
+\end{tikzpicture}
+
+\subsubsection{Αποδιαμόρφωση}
+Το διάγραμμα του αποδιαμορφωτή είναι το εξής:
+
+\begin{circuitikz}[scale=1.6]
+	\draw (0,0) node[xshift=4.9mm,oscillator] (osc) {}
+	node[above right,xshift=5mm] {$A_c' \cos(2πf_c t + φ)$};
+	\draw (0,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (mult) {}
+	node[scale=1.5] {$\times$};
+	\draw (2,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (lpf) {}
+	node[] {LPF};
+	
+	\draw[<-] (mult.west) node[above left] {$s(t)$}  -- ++(-2,0) node[above right] {SSB};
+	\draw[->] (mult.east) -- (lpf.west) node[above,midway,orange!20!black] {$v(t)$};
+	\draw[->] (lpf.east) -- ++(0.5,0) node[right] {$u_o(t)$};
+	\draw[->] (osc.north) -- (mult.south);
+\end{circuitikz}
+
+Κάνουμε τις πράξεις:
+\begin{align*}
+	\left. s(t)\cdot A_c' \cos(2πf_ct+φ) \right|_{\mathrm{LPF}}
+	&= \frac{A_cA_c'}{4}m(t)\sin φ\cos φ
+	\mp \frac{A_cA_c'}{4}\hat m(t) \sin φ
+\end{align*}
+
+Αν πετύχουμε ακριβώς τη φέρουσα συχνότητα, δηλαδή αν βρούμε τη φάση του φέροντος και
+\( φ = 0 \) (που απαιτεί κύκλωμα συγχρονισμού - άρα έχουμε \textbf{ομόδυνο ή σύγχρονο}
+αποδιαμορφωτή, που είναι δυσκολότερος και πιο παλιά ακριβότερος), τότε:
+\[
+u_o(t) = \frac{A_cA_c'}{4}m(t)
+\]
+
+Σε διαφορετική περίπτωση όμως, προστίθεται ο όρος \( \frac{A_cA_c'}{4}\hat m(t) \sin φ \),
+ο οποίος είναι μια παραμόρφωση που είναι ουσιαστικά το σήμα μετασχηματισμένο κατά
+Hilbert. Αυτός ο όρος εισάγει μια διαφορά φάσης, η οποία παραμορφώνει ιδιαίτερα τη
+φωνή, προκαλώντας το \textbf{φαινόμενο Donald Duck}.
+Αυτό απέτρεψε τη χρησιμοποίηση αυτού του είδους διαμόρφωσης στην κλασική ραδιοφωνία, παρά
+μόνον συνήθως για εσωτερική χρήση στη βιομηχανία, όταν απαιτείται εξοικονόμηση φάσματος.
+
+\subsection{VSB}
+Η παραπάνω ανάλυση έχει νόημα όταν μιλάμε για ακουστικά σήματα, τα οποία δεν ξεκινάνε από
+τα 0 Hz, αλλά π.χ από τα 300 Hz, επιτρέποντας την ευκολότερη υλοποίηση του φίλτρου ή του
+μεταφορέα φάσης. Σε υπόλοιπα (π.χ. τηλεοπτικά) σήματα όμως δεν ισχύει αυτό:
+
+\begin{center}
+\begin{tikzpicture}
+\draw (-2,0) -- (2,0);
+\draw (0,-1) -- (0,2);
+
+\draw[dashed] plot[smooth,tension=1]
+coordinates {(-1.8,0) (0,1.7) (1.8,0)};
+
+\draw[xshift=1cm,blue!50!cyan,ultra thick] plot [smooth]
+coordinates {(-0.5,0) (-0.4,0.1) (0,0.6) (0.4,0.1) (0.5,0)};
+\draw[xshift=-1cm,blue!50!cyan,ultra thick] plot [smooth]
+coordinates {(-0.5,0) (-0.4,0.1) (0,0.6) (0.4,0.1) (0.5,0)};
+
+\draw[green!50!yellow!50!black,<->,yshift=2mm] (-1+0.5,0) -- (+1-0.5,0) node[above,midway,scale=.7] {600 Hz};
+
+\draw (0,-1) node[below] {ακουστικό σήμα};
+
+\begin{scope}[xshift=5cm]
+\draw (-2,0) -- (2,0);
+\draw (0,-1) -- (0,2);
+
+\draw[red!50!yellow,ultra thick,scale=.8] plot[smooth,tension=1]
+coordinates {(-1.8,0) (0,1.7) (1.8,0)};
+
+\draw (0,-1) node[below] {τηλεοπτικό σήμα};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+Για αυτό το λόγο, σκεφτόμαστε ένα άλλο είδος διαμόρφωσης, στο οποίο δεν κόβουμε ολόκληρη την
+π.χ. κάτω πλευρική ζώνη της πληροφορίας, αλλά επιτρέπουμε να περάσει και ένα κομμάτι από
+αυτήν:
+\todo{Improvise a graph}
+
+Αυτή η διαμόρφωση ονομάζεται \textbf{VSB (Vestigial Side Band)} και έχει απόκριση της μορφής:
+
+\begin{tikzpicture}
+\draw (-6,0) -- (6,0);
+\draw (0,-1) -- (0,3) node[right] {$H(f)$};
+
+\def\fa{2+0.15}
+\def\fb{5.8}
+\def\tz{1}
+\def\A{2}
+\filldraw[fill=blue!80!cyan!80!black,fill opacity=.15,path fading=east,thick]
+plot[smooth,tension=1] coordinates {
+	(\fa-\tz,0) (\fa-\tz+\tz/4,\A/8) (\fa-\tz/2,\A/2) (\fa-\tz/4,7*\A/8) (\fa,\A)
+}
+--
+plot[smooth,tension=1] coordinates {
+	(\fb,\A) (\fb+\tz/4,7*\A/8) (\fb+\tz/2,\A/2) (\fb+3*\tz/4,\A/8) (\fb+\tz,0)
+}
+;
+
+\draw[xshift=2cm,blue!70!black] (-1.5,0) -- (0,2) -- (1.5,0);
+
+
+\draw[dashed] (2,0) node[below] {$f_c$} -- ++(0,2);
+\draw[dashed,path fading=north] (\fa-\tz,0) -- ++(0,2);
+\draw (\fa-\tz,0) node[below,scale=.8] {$f_c-f_v$};
+\draw (2+1.5,0) node[below,scale=.8] {$f_c+w$};
+
+\begin{scope}[xscale=-1]
+\filldraw[fill=blue!80!cyan!80!black,fill opacity=.15,path fading=west]
+plot[smooth,tension=1] coordinates {
+	(\fa-\tz,0) (\fa-\tz+\tz/4,\A/8) (\fa-\tz/2,\A/2) (\fa-\tz/4,7*\A/8) (\fa,\A)
+}
+--
+plot[smooth,tension=1] coordinates {
+	(\fb,\A) (\fb+\tz/4,7*\A/8) (\fb+\tz/2,\A/2) (\fb+3*\tz/4,\A/8) (\fb+\tz,0)
+}
+;
+
+
+\draw[dashed] (2,0) node[below] {$-f_c$} -- ++(0,1) edge[path fading=north] ++(0,1);
+\end{scope}
+\end{tikzpicture}
+
+Βέβαια παρατηρούμε ένα πρόβλημα, το οποίο θα προσπαθήσουμε να διορθώσουμε αργότερα.
+Συγκεκριμένα ότι το σήμα εξόδου μετά το φίλτρο δεν θα
+περιέχει μόνο την πάνω πλευρική ζώνη, αλλά και ένα μέρος της κάτω, οδηγώντας σε κάποια
+παραμόρφωση:
+\\*
+\begin{tikzpicture}[scale=1.2]
+\draw (-1,0) -- (5,0);
+\draw (0,-0.5) -- (0,3);
+
+\def\fa{2+0.15}
+\def\fb{5.8}
+\def\tz{1}
+\def\A{2}
+
+\fill[red!70!blue,opacity=.2,postaction={pattern=north east lines},xshift=2cm]
+plot[smooth,tension=0.5] coordinates {(0.15-1,0) (0.15-1+2.2/4,3/8) (0,2) } -- ++(0,-2);
+
+\draw[very thick,xshift=2cm,blue!70!black]
+plot[smooth,tension=0.5] coordinates {(0.15-1,0) (0.15-1+2.2/4,3/8) (0,2) } -- (1.5,0);
+
+
+\draw[dashed] (2,0) node[below] {$f_c$} -- ++(0,2);
+\draw[dashed,path fading=north] (\fa-\tz,0) -- ++(0,2);
+\draw (\fa-\tz,0) node[below,scale=.8] {$f_c-f_v$};
+\draw (2+1.5,0) node[below,scale=.8] {$f_c+w$};
+\end{tikzpicture}
+
+Ο διαμορφωτής μοιάζει κάπως έτσι:
+
+\begin{circuitikz}[scale=1.6]
+	\draw (0,-0.5) node[xshift=4.9mm,oscillator] (osc) {}
+	node[above right,xshift=5mm] {$A_c' \cos(2πf_c t + φ)$};
+	\draw (0,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (mult) {}
+	node[scale=1.5] {$\times$};
+	\draw (2.5,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (bpf) {}
+	node[] {$H(f)$};
+	
+	\draw[<-] (mult.west)  -- ++(-1,0) node[midway,below] {$m(t)$};
+	\draw[->] (mult.east) -- (bpf.west) node[above,midway,orange!20!black] {$u(t)$} node[below,midway] {DSB-SC};
+	\draw[->] (bpf.east) -- ++(1,0) node[above,midway] {$s(t)$} node[below,midway] {VSB};
+	\draw[->] (osc.north) -- (mult.south);
+	
+	\draw (bpf.north) node[above,scale=.9] {BPF};
+\end{circuitikz}
+
+και πολύ απλά εφαρμόζει το παραπάνω φίλτρο στην εκπεμπόμενη συχνότητα:
+\begin{align*}
+	S(f) &= U(f)H(f) = \frac{A_c}{2}\left[ M(f-f_c)+M(f+f_c) \right]
+\end{align*}
+
+Ο αποδιαμορφωτής είναι ομόδυνος:
+
+\begin{circuitikz}[scale=1.6]
+	\draw (0,0) node[xshift=4.9mm,oscillator] (osc) {}
+	node[above right,xshift=5mm] {$A_c' \cos2πf_c t$};
+	\draw (0,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (mult) {}
+	node[scale=1.5] {$\times$};
+	\draw (1.6,1) node[rectangle,draw,minimum width=15mm,minimum height=10mm] (lpf) {}
+	node[] {LPF};
+	
+	\draw[<-] (mult.west) -- ++(-0.5,0) node[left] {$s(t)$};
+	\draw[->] (mult.east) -- (lpf.west) node[above,midway,orange!20!black] {$v(t)$};
+	\draw[->] (lpf.east) -- ++(0.5,0) node[right] {$u_o(t)$};
+	\draw[->] (osc.north) -- (mult.south);
+\end{circuitikz}
+
+Για αυτόν ισχύει:
+\begin{align*}
+	v(t) &= A_c' \cos 2πf_c t s(t) \\
+	V(f) &= \frac{A_c'}{2} \left[ S(f-f_c)+S(f+f_c) \right]
+	\\ &= \frac{A_c'A_c}{4}\left[ M(f-2f_c)+M(f) \right]H(f-f_c)
+	+\frac{A_c'A_c}{4}\left[ M(f)+M(f+2f_c) \right]H(f+f_c)
+	\\ &= \frac{A_c'A_c}{4}M(f)\left[H(f-f_c)+H(f+f_c)\right]
+	+ \frac{A_c'A_c}{4}\left[M(f-2f_c)H(f-f_c)+M(f+2f_c)H(f+f_c)\right]
+\end{align*}
+Ας δούμε έναν-έναν τους όρους:
+\todo{Graph 64}
+
+Παρατηρούμε ότι στο κέντρο υπάρχει η επίδραση και των δύο φίλτρων επάνω στο σήμα. Για
+να πάρουμε το αρχικό, θα πρέπει η πρόσθεσή τους να μην επηρεάζει την έξοδο, δηλαδή:
+\[
+H(f-f_c)+H(f+f_c) = 1
+\]
+
+Σε διαφορετική περίπτωση, η έξοδος θα είναι παραμορφωμένη:
+
+\begin{tikzpicture}
+\draw (0,-1) -- (0,2);
+\draw (-1,0) -- (3.5,0);
+
+\draw[dashed,draw=gray] (2,0.5) -- (2,0) node[below] {$f$};
+\draw[dashed,draw=gray] (2.7,1) -- (2.7,0) node[below] {$f_c$};
+
+\draw[very thick,blue!80!black]
+(1.7,0) -- (2,0.5) -- plot[smooth] coordinates{ (2,1) (2.35,1.04) (2.7,1) } -- (3.2,0);
+\end{tikzpicture}
+
+
+Ενώ, αν έχουμε σωστά ρυθμισμένα φίλτρα σύμφωνα με παραπάνω, θα προστίθενται τα δύο σήματα
+για να πάρουμε το τέλειο αρχικό:
+
+\begin{tikzpicture}
+\draw (0,-0.2) -- (0,1.5);
+\draw (-2,0) -- (2,0);
+\draw[very thick,blue,dashed,opacity=.4]
+(-1,0) -- plot[smooth] coordinates {(-0.5,0.7) (0,1.3) (0.5,0.7)} -- (1,0);
+
+\draw[very thick,blue!80!black]
+(-1,0) -- plot[smooth,tension=0.4] coordinates {(-0.5,0.7) (0,0.8) (0.5,0.7)} -- (1,0);
+\draw[very thick,blue!75!black!70!magenta]
+plot[smooth,tension=0.3] coordinates {(-0.5,0) (0,0.3) (0.5,0)};
+\end{tikzpicture}
+
+Δηλαδή, το χαρακτηριστικό που απαιτούμε είναι η απλώς η περιττή συμμετρία (γύρω από το
+\( f_c \)) του φίλτρου, και τέτοια φίλτρα μπορούν να κατασκευαστούν:
+
+\begin{tikzpicture}
+\draw (-0.5,0) -- (9,0);
+\draw (0,-1) -- (0,3);
+
+\def\fa{3+0.15}
+\def\fb{5.8}
+\def\tz{2}
+\def\A{2}
+\filldraw[fill=blue!80!cyan!80!black,fill opacity=.15,path fading=east,thick]
+plot[smooth,tension=0.75] coordinates {
+	(\fa-\tz,0) (\fa-\tz+\tz/4,\A/8) (\fa-\tz/2,\A/2) (\fa-\tz/4,7*\A/8) (\fa,\A)
+}
+--
+plot[smooth,tension=1] coordinates {
+	(\fb,\A) (\fb+\tz/4,7*\A/8) (\fb+\tz/2,\A/2) (\fb+3*\tz/4,\A/8) (\fb+\tz,0)
+}
+;
+
+\draw[dashed] ({\fa-\tz/2},0) node[below] {$f_c$} -- ++(0,\A/2);
+\draw[dashed] ({\fa-\tz/2},\A/2) -- (0,\A/2) node[left] {$\sfrac{1}{2}$};
+\draw[dashed] (0,\A) node[left] {$1$} -- (\fa,\A);
+\draw[dashed,path fading=north] (\fa-\tz,0) -- ++(0,2);
+\draw (\fa-\tz,0) node[below,scale=.8] {$f_c-f_v$};
+\draw[dashed] (\fa,0) node[below,scale=.8] {$f_c+f_v$} -- ++(0,2);
+\draw[dashed,path fading=north] ({(\fa+\fb)/2},0) -- ++(0,2);
+\draw ({(\fa+\fb)/2},0) node[below,scale=.9] {$f_c+w$};
+\end{tikzpicture}
+
+Ως \underline{άσκηση για το σπίτι} αφήνεται η γεωμετρική απόδειξη του ότι η απλή συμμετρία
+του φίλτρου σημαίνει ότι και το ύψος του αθροίσματος θα παραμένει σταθερό (βλ. \textbf{\hyperref[sec:interesting-question]{Κεφάλαιο
+	 \ref*{sec:interesting-question}}}).
+
+Με βάση αυτήν τη διαμόρφωση λειτουργεί η αναλογική τηλεόραση.
+
+\subsubsection{Λίγα λόγια για την τηλεόραση}
+Το εύρος ζώνης ενός τηλεοπτικού καναλιού είναι τυπικά \textit{6 MHz}, και εκπέμπεται σε
+κάποια συχνότητα μεταξύ 54-216 MHz (VHF, με ένα κενό για τα FM) ή 470-890 MHz (UHF).
+
+Ας ασχοληθούμε με ένα κανάλι μεταξύ 54-60 MHz. Αρχικά, στέλνουμε έναν κλασικό AM τόνο
+στα 55.25 MHz, ο οποίος θα βοηθήσει στην αποδιαμόρφωση (ώστε να γίνει φθηνότερη):
+
+\begin{tikzpicture}
+\draw[->] (-0.2,0) -- (7,0) node[below] {MHz};
+\draw (0,-0.2) -- (0,3);
+
+\draw [draw=red!50!orange!80!gray,ultra thick,->]
+(3.5,0) node[below,scale=.8] {$55.25$} -- ++(0,2);
+\draw (3,0) node[above,scale=.8] {$54$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+
+\draw (4.8,0) node[below,scale=.6,yshift=-1mm,xshift=-2mm] {$59.75$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+\draw (5,0) node[above,scale=.8] {$60$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+\end{tikzpicture}
+
+Στη συνέχεια, απλώνουμε το φάσμα μεταξύ 54 ως 59.75 MHz (αφήνοντας 0.25 MHz στα δεξιά
+για τον ήχο διαμορφωμένο κατά FM). Τα 1.25 MHz στα αριστερά του δέλτα είναι η κάτω πλευρική
+ζώνη, και τα 4.5 στα δεξιά είναι η άνω πλευρική ζώνη.
+
+\begin{tikzpicture}
+\draw[draw=blue!50!cyan!70!black,very thick,fill=blue!50!cyan,fill opacity=.09]
+plot[smooth,tension=.4] coordinates {(3,0) (3.2,1.4) (4.6,1.4) (4.8,0)};
+
+\draw[->] (-0.2,0) -- (7,0) node[below] {MHz};
+\draw (0,-0.2) -- (0,3);
+
+\draw[dashed,draw=cyan!80!blue] (5,0) -- ++(0,1.5);
+
+\draw [draw=red!50!orange!80!gray,ultra thick,->]
+(3.5,0) node[below,scale=.8] {$55.25$} -- ++(0,2);
+\draw (3,0) node[above,scale=.8] {$54$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+
+\draw (4.8,0) node[below,scale=.6,yshift=-1mm,xshift=-2mm] {$59.75$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+\draw (5,0) node[above,scale=.8] {$60$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+
+\draw[blue!50!cyan,<->] (5,1) node[right,scale=.7] {$0.25$} -- ++(-0.27,0);
+\draw[blue!50!cyan,<->] (3.53,0.5) -- ++(4.8-3.57,0) node[midway,above,scale=.8] {$4.5$};
+\draw[blue!50!cyan,<->] (3.06,0.7) -- (3.48,0.7) node[midway,above,scale=.6] {$1.25$};
+\end{tikzpicture}
+
+Η μορφή του σήματος που στέλνουμε οφείλεται στον τρόπο που λειτουργούσαν οι τηλεοράσεις
+CRT: Ένα κανόνι ηλεκτρονίων σκανάρει την οθόνη κατά γραμμές και στήλες - σκανάρει πρώτα
+τα κελιά μιας γραμμής, μετά της επόμενης, κ.ό.κ. Επομένως, το σήμα αποτελείται από τις
+φωτεινότητες των κελιών της πρώτης γραμμής, μετά ένα κενό (που γίνεται παλμός στο σήμα)
+μέχρι το κανόνι να μεταφερθεί στην επόμενη γραμμή, στη συνέχεια τις φωτεινότητες
+της επόμενης γραμμής κ.ό.κ.
+
+Με τους παραπάνω παλμούς μπορεί τα επιτευχθεί και συγχρονισμός, ενώ κάποιες τεχνικές
+πολυπλεξίας χρησιμοποιήθηκαν και για τη μεταφορά πληροφοριών χρώματος.
+
+Από τη μεριά του δέκτη, η αποδιαμόρφωση μπορεί να γίνει χωρίς να δίνουμε πολλή σημασία
+στην κάτω πλευρική ζώνη:
+
+\begin{tikzpicture}
+\draw[draw=blue!50!cyan!30!gray,very thick,fill=blue!50!cyan!10!gray,fill opacity=.15]
+plot[smooth,tension=.2] coordinates {(3,0) (3.5,1.4) (4.6,1.4) (4.8,0)};
+
+\draw[->] (-0.2,0) -- (7,0) node[below] {MHz};
+\draw (0,-0.2) -- (0,3);
+
+\draw[dashed]
+(3.5,0) node[below,scale=.8] {$55.25$} -- ++(0,1.4);
+\draw (3,0) node[below left,scale=.8] {$54$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+
+\draw (4.8,0) node[below,scale=.6,yshift=-1mm,xshift=-2mm] {$59.75$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+\draw (5,0) node[below right,scale=.8] {$60$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+
+\end{tikzpicture}
+
+Αντίστοιχα, ένα ψηφιακό τηλεοπτικό σήμα (π.χ. με ρυθμό 20 Mbit/s) μπορεί να χωρέσει
+με παρόμοιο τρόπο στα 6 MHz:
+
+\begin{tikzpicture}[scale=0.7]
+\draw[draw=blue!50!cyan!70!black,very thick,fill=green!70!cyan,fill opacity=.19]
+plot[smooth,tension=.2] coordinates {(3,0) (3.2,1.4) (4.8,1.4) (5,0)};
+
+\draw[->] (-0.2,0) -- (7,0) node[below] {MHz};
+\draw (0,-0.2) -- (0,3);
+
+\draw [draw=red!50!orange!80!gray,ultra thick,->]
+(3.2,0) node[below,scale=.7] {$54.115$} -- ++(0,2);
+\draw (3,0) node[above left,scale=.8] {$54$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+
+\draw (5,0) node[below,scale=.8] {$60$} node[inner sep=2pt] (m) {};
+\draw (m.north) -- (m.south);
+\end{tikzpicture}
+
+\subsection{Εφαρμογές}
+\paragraph{1.}
+\label{application.am-phase}
+Μερικές διαμορφώσεις:
+\begin{alignat*}{2}
+	\text{AM} \quad && s(t) &= \left(1+k_am(t)\right)\cos 2πf_c t \\
+	\text{DSB-SC} \quad && s(t) &= A_c m(t)\cos 2πf_c t\\
+	\text{SSB} \quad && s(t) &= \frac{1}{2} A_cm(t)\cos 2πf_c t \mp \frac{1}{2}A_c\hat m(t)\sin2π
+	f_c t
+	\\ && &= \frac{1}{2}A_c\sqrt{m^2(t)+\hat m^2(t)}\cos\left(2πf_c t +\phi(t)\right)
+\end{alignat*}
+όπου \( \displaystyle φ(τ) = \tan^{-1}\frac{\hat m(t)}{m(t)} \).
+
+Οι πρώτες δύο διαμορφώσεις έχουν την πληροφορία μόνο στο πλάτος, αλλά η τελευταία την
+περιλαμβάνει και στην φάση \( \phi(t) \).
+
+Αν φανταστούμε όμως ότι η πληροφορία αποτελείται από δύο ψηφιακά σήματα, στα οποία το πλάτος
+1 αναπαριστά το 1 και το -1 αναπαριστά το ψευδές, τότε το μέτρο θα είναι πάντα \( \sqrt{2} \),
+αλλά μόνο η φάση θα μεταβάλλεται. Αυτή η διαμόρφωση χρησιμεύει για τη μετάδοση ψηφιακών δεδομένων
+και ονομάζεται QPSK (Quadrature Phase-Shift Keying).
+
+\begin{tikzpicture}[scale=.8]
+\draw (0,0) -- (6,0);
+
+\draw[dashed,gray!50!black] (3,0) -- (3,.7);
+
+\draw[yscale=.7,very thick,blue] plot[const plot] coordinates {(0,1) (1,-1) (2,1) (3,1) (4,-1) (5,-1)};
+
+\foreach \x in {1,2,...,5}
+\filldraw[blue!20!black] (\x,0) circle (1.5pt);
+
+\draw (4,1) node[above] {$1$};
+\draw (5,-1) node[below] {$-1$};
+
+\begin{scope}[xshift=8cm]
+\draw (0,0) -- (6,0);
+
+\draw[dashed,gray!50!black] (3,0) -- (3,.7);
+
+\draw[very thick,cyan,opacity=.8]
+plot[variable=\x,domain=0:1,samples=\gsamples]
+(\x,{  0.7* cos(20*\x r)   });
+\draw[very thick,cyan!80!blue,opacity=.9]
+plot[variable=\x,domain=1:2,samples=\gsamples]
+(\x,{  0.7* cos(20*\x r+170)   });
+\draw[very thick,cyan,opacity=.8]
+plot[variable=\x,domain=2:4,samples=\gsamples]
+(\x,{  0.7* cos(20*\x r)   });
+\draw[very thick,cyan!80!blue,opacity=.9]
+plot[variable=\x,domain=4:5,samples=\gsamples]
+(\x,{  0.7* cos(20*\x r+170)   });
+
+\draw[yscale=.7,very thick,blue] plot[const plot] coordinates {(0,1) (1,-1) (2,1) (3,1) (4,-1) (5,-1)};
+
+\foreach \x in {1,2,...,5}
+\filldraw[blue!20!black] (\x,0) circle (1.5pt);
+
+\draw (4,1) node[above] {$1$};
+\draw (5,-1) node[below] {$-1$};
+\end{scope}
+\end{tikzpicture}
+
+\paragraph{2.}
+Έστω τα σήματα πληροφορίας και φέροντος:
+\begin{align*}
+	m(t) &= A_m\cos(2πf_m t) \\
+	c(t) &= A_c\cos(2πf_c t)
+\end{align*}
+
+Έστω ότι θέλουμε να το διαμορφώσουμε κατά SSB. Πρώτα το διαμορφώνουμε κατά DSB, και μετά
+εφαρμόζουμε ένα φίλτρο:
+\todo{Graph 73}
+
+Το φίλτρο αυτό κόβει την κάτω πλευρική ζώνη και αφήνει να περάσει ένα ίχνος της, και κόβει
+και την πάνω πλευρική ζώνη, αφήνοντας να περάσει ένα ακόμα μικρότερο ίχνος της.
+
+Δηλαδή κόβει ένα ποσοστό \( k \) (π.χ 2\%) από την επάνω (άρα αφήνει να περάσει το \( (1-k)
+ \) ή π.χ. το 98\%), και αφήνει να περάσει ένα ποσοστό \( k \) από την κάτω (αν θεωρήσουμε
+ ότι το φίλτρο είναι συμμετρικό).
+ 
+Το αποδιαμορφωμένο σήμα θα μοιάζει κάπως έτσι:
+\todo{Graph 74}
+
+Το διαμορφωμένο σήμα, όπως παρατηρούμε από το πεδίο των συχνοτήτων, θα έχει τη μορφή:
+\begin{align*}
+	s_{\mathrm{USB}}(t) &= \frac{1}{2}kA_cA_m\cos 2π(f_c+f_m)t
+	+ \frac{1}{2}(1-k)A_cA_m\cos 2π (f_c-f_m)t \\
+	&= \frac{1}{2}kA_cA_m\left(
+	\cos2πf_ct\cos2πf_mt-\sin2πf_ct\sin2πf_mt
+	\right)
+	\\ &\hphantom{=} + \frac{1}{2}(1-k)A_cA_m\left(
+	\cos2πf_ct\cos2πf_mt+\sin2πf_ct\sin2πf_mt
+	\right)
+	\\ &=
+	\underbrace{\frac{1}{2}A_cA_m\cos2πf_m t\cos2πf_c t}_{\text{DSB-SC}}
+	+ \underbrace{\frac{1}{2}A_cA_m(1-2k)\sin2πf_mt\sin2πf_ct}_{\text{DSB-SC στον
+			μετασχηματισμό Hilbert}}
+\end{align*}
+
+Δηλαδή μπορούμε να φτάσουμε στην έξοδο διαμορφώνοντας δύο φορές κατά DSB-SC (τη
+δεύτερη την εφαρμόζουμε στο phase-shifted κατά \( 90\degree \) σήμα).
+
+Η σταθερά \( k \) εξαρτάται από την κλίση του φίλτρου που χρησιμοποιήσαμε παραπάνω.
+Πιο συγκεκριμένα, έχουμε διαφορετικές περιπτώσεις:
+
+\begin{enumpar}
+	\item Για \( k=\frac{1}{2} \), έχουμε \emph{DSB-SC}
+	\item Για \( k=0 \), έχουμε \emph{LSSB} \\
+	Για \( k=1 \), έχουμε \emph{USSB}
+	\item Για \( 0\leq k \leq \frac{1}{2} \), έχουμε \emph{VSB} (πάνω πλευρική ζώνη)
+	\\
+	Για \( \frac{1}{2} \leq k \leq 1 \), έχουμε \emph{VSB} (κάτω πλευρική ζώνη)
+\end{enumpar}
+
+Δηλαδή μπορούμε να πάρουμε όλες τις διαμορφώσεις που παρουσιάσαμε με κατάλληλη επιλογή
+του \( k \), εκτός από το ΑΜ.
+
+\subparagraph{}
+Για την \textbf{αποδιαμόρφωση}, θα χρειαστεί σίγουρα να έχουμε \textit{σύμφωνο / σύγχρονο / ομόδυνο / coherent}
+αποδιαμορφωτή (που μπορεί να βρει τη φάση του φέροντος), ο οποίος πρέπει να γνωρίζει
+τη φάση του φέροντος η οποία:
+\begin{itemize}
+	\item Προκύπτει στον ταλαντωτή και δεν είναι γνωστή στο δέκτη
+	\item Μπορεί να μεταβάλλεται αργά στον ταλαντωτή και δεν έχει σταθερή τιμή
+	\item Αλλάζει ανάλογα με το μέσο διάδοσης του κύματος και τυχόν εμπόδια
+\end{itemize}
+
+Τυπικά για την υλοποίηση του αποδιαμορφωτή, αν θεωρήσουμε ότι κάπως έχουμε βρει τη
+φάση του φέροντος, πολλαπλασιάζουμε το λαμβανόμενο σήμα
+με τη συχνότητα του φέροντος:
+\begin{align*}
+	v(t) &= s_{\mathrm{USB}}(t) A_c' \cos 2πf_c t
+	\\ &= \left[\frac{1}{2}A_cA_c' A_m\cos2πf_mt\right]
+	\cancelto{\frac{1}{2}+\frac{1}{2}\cos2π2f_ct}{\cos^22πf_ct}
+	\\ &\hphantom{=}
+	+ \left[\frac{1}{2}A_cA_c'A_m(1-2k)\sin2πf_mt\right]
+	\cancelto{\frac{1}{2}\sin2π2f_ct }{\sin2πf_ct\cos2πf_ct}
+	\\
+	\left.v(t)\right|_{\mathrm{LPF}} &= \frac{1}{4} A_cA_c' A_m\cos2πf_m t \quad
+	\to m(t)
+\end{align*}
+
+Έστω όμως ότι στέλνω ένα σήμα \( s_{\mathrm{VSB}+C}(t) = A_c\cos2πf_ct +
+k_as_{\mathrm{VSB}}(t) \), δηλαδή VSB μαζί όμως με το φέρον.
+Τότε το σήμα που στέλνω είναι:
+\begin{align*}
+	s_{\mathrm{USB}+C} (t) &=
+	A_c\cos2πf_c t + k_a s_{\mathrm{USB}}(t)
+	\\ &= \dots =
+	A_c\left[ 1+\frac{k_a}{2}A_m\cos(2πf_mt) \right]\cos2πf_c t
+	+ \left[\frac{k_a}{2} A_c A_m (1-2k) \sin(2πf_mt) \right]\sin2πf_ct
+	\\ &= A(t) \cdot \cos\left(2πf_ct + φ(τ)\right)
+\end{align*}
+όπου:
+\begin{align*}
+	A(t) &=
+	\sqrt{A_c^2\left[ 1+\frac{k_a}{2}A_m \cos(2πf_mt) \right]^2
+		+A_c^2\left[ \frac{k_a}{2}A_m(1-2k)\sin(2πf_mt) \right]^2
+	} \\ &= A_c\left[ 1+\frac{k_a}{2}A_m\cos(2πf_mt) \right]
+	\sqrt{1+\left(\frac{\frac{k_a}{2}A_m(1-2k)\sin2πf_ct}{
+			1+\frac{k_a}{2}A_m\cos2πf_mt}\right)^2}
+\end{align*}
+
+Δηλαδή έχουμε μία διαμόρφωση AM \( 1+\frac{k_a}{2}A_m\cos(2πf_m t) \) μαζί με μία
+παραμόρφωση \( \sqrt{1+(\cdots)^2} \), την οποία θέλουμε να ελαχιστοποιήσουμε όσο
+περισσότερο γίνεται. Αυτό δικαιολογεί και το ότι για την αποδιαμόρφωση του τηλεοπτικού
+σήματος αρκεί μόνο ένας αποδιαμορφωτής FM.
+
+Στόχος μας είναι να ελαχιστοποιήσουμε την παραμόρφωση, άρα τον όρο:
+\[
+\left[\frac{μ(1-2k)\sin2πf_ct}{1+μA_m\cos2πf_mt}\right]^2
+\]
+(όπου \( μ = \frac{1}{2}k_aA_m \) ), τον οποίο μπορούμε να ρυθμίσουμε επιλέγοντας τις
+σταθερές της διαμόρφωσης \( A_m \), το συντελεστή του φέροντος \( k_a \), ή την κλίση \( k \)
+του φίλτρου.
+
+\paragraph{3.}
+Θυμόμαστε τη βασική λειτουργία του πολλαπλασιαστικού διαμορφωτή:
+\todo{Graph 75}
+
+με έξοδο:
+\begin{align*}
+	s'(t) &= s_1(t)A_c\cos(2πf_l t) \\
+	&= \frac{1}{2}A_l m(t) \left[
+	\cos2π(f_1+f_l)t + \cos 2π(f1-f_l)t
+	\right]
+\end{align*}
+όπου μπορούμε να επιλέξουμε ποιός μόνον από τους δύο όρους (\( f_1+f_l \) ή \( f_1-f_l \), και
+ονομάζουμε τη διαδικασία up conversion ή down conversion αντίστοιχα) θα βγει στην έξοδο
+από το Band Pass φίλτρο. Με κατάλληλη επιλογή της \( f_l \) και του φίλτρου, μπορούμε να
+ελέγξουμε ποιά συχνότητα εξόδου θέλουμε να πολλαπλασιάσουμε με το σήμα, ώστε να έχουμε
+όποια μετατόπιση θέλουμε στην έξοδο:
+\todo{Graph 76}
+
+\paragraph{4. Πολυπλεξία (multiplexing)}
+Είναι γνωστό πως στον αέρα σήμερα υπάρχει μεγάλος αριθμός διαμορφωμένων τηλεοπτικών,
+ραδιοφωνικών, κλπ. σημάτων. Ας εξετάσουμε πώς είναι δυνατό να στέλνονται όλα αυτά ταυτόχρονα.
+
+\subparagraph{FDMA}
+
+Προφανώς αν στείλουμε δύο διαμορφωμένα σήματα στην ίδια συχνότητα ταυτόχρονα χωρίς παραπάνω
+επεξεργασία, ο δέκτης θα αποδιαμορφώσει το άθροισμα τους, και δεν μπορούμε να
+πάρουμε το καθένα ξεχωριστά.
+\todo{Graph 77}
+
+Αν όμως δώσουμε στο κάθε σήμα τη δική του συχνότητα, τότε ο κάθε δέκτης μπορεί να
+συντονιστεί στο επιθυμητό σημείο και να δώσει κάθε σήμα ξεχωριστά, όπως επιθυμούμε:
+\todo{Graph 78}
+
+Αυτή η τεχνική ονομάζεται \textbf{Frequency-Division Multiple Access (FDMA)}, δηλαδή
+πολυπλεξία στη συχνότητα.
+
+Για παράδειγμα, ένας τηλεπικοινωνιακός οργανισμός που θέλει να στείλει πολλά σήματα 
+φωνής μέσω ενός καναλιού (π.χ. καλωδίου), μπορεί να διαμορφώνει κάθε σήμα και να του
+αναθέτει το δικό του πεδίο συχνοτήτων.
+
+Για παράδειγμα, αν έχουμε \( N \) φωνητικά σήματα (θεωρούμε ότι έχουν εύρος ζώνης
+μεταξύ 300-3300 Hz, δηλαδή περίπου 4 kHz), τότε πρέπει να διαμορφώσουμε το καθένα
+ξεχωριστά, με πολλαπλάσια μιας βασικής συχνότητας φέροντος (π.χ. 4 kHz):
+\todo{Graph 79}
+
+Έτσι, στο φάσμα των συχνοτήτων έχουμε πολλά σήματα κολλημένα μεταξύ τους:
+\todo{Graph 80}
+
+Και ο αποδιαμορφωτής ακολουθεί ακριβώς την αντίστροφη διαδικασία:
+\todo{Graph 81}
+
+Για τον επιπλέον έλεγχο του φάσματος, τα σήματα μπορεί να ενώνονται σε ομάδες, οι οποίες
+ενώνονται σε υπερομάδες, και στη συνέχεια σε super-groups, ενώ για δημόσια κανάλια
+(π.χ. για ραδιοφωνικούς σταθμούς) μπορεί να υπάρχει κάποιος οργανισμός που να ελέγχει την
+κατανομή των συχνοτήτων.
+
+\subparagraph{TDMA}
+Η ιδέα του \textbf{Time-Division Multiple Access (TDMA)} βασίζεται στο ότι για να πάρουμε
+τις τιμές ενός σήματος το δειγματοληπτούμε ανά τακτά χρονικά διαστήματα:
+\todo{Graph  83}
+
+Σκεφτόμαστε αν π.χ. έχουμε 3 σήματα, κάθε φορά που δειγματοληπτείται το πρώτο, μετά από
+λίγο να δειγματοληπτείται το δεύτερο, μετά το τρίτο, και μετά να ξεκινάμε ξανά από την
+αρχή, δειγματοληπτώντας το πρώτο, το δεύτερο, κ.ό.κ:
+\todo{Graph 84}
+
+Έτσι, μέσα σε κάθε frame (χρονοθυρίδα),
+μπορούμε να δειγματοληπτήσουμε πολλά (π.χ. 100) διαφορετικά σήματα.
+
+Η τεχνική αυτή μπορεί να χρησιμοποιηθεί και για ψηφιακά σήματα, ενώ είναι δυνατόν να
+συνδυαστεί με το FDMA για πολυπλεξία ακόμα περισσότερων σημάτων.
+
+\subparagraph{CDMA}
+Το \textbf{Code-Division Multiple Access (CDMA)} εφαρμόζεται σε ψηφιακά σήματα, που θεωρούμε
+ότι μπορούν να λάβουν π.χ. μόνο τις τιμές 1 ή -1.
+
+Έστω δύο σήματα:
+\todo{Graph 84}
+
+Με κατάλληλο πολλαπλασιασμό, άθροιση και ολοκλήρωση, θα λάβουμε ένα σήμα ευρείας μπάντας
+που περιέχει τα δεδομένα μας, ενώ θα είναι αντιληπτό μόνο ως θόρυβος σε κάποιον άλλον ακροατή,
+κάτι που έκανε αυτήν την κωδικοποίηση χρήσιμη στον Β' Παγκόσμιο Πόλεμο.
+
+\todo{συμπλήρωση?}
+
+\subsection{Ένα μαθηματικό ερώτημα που τέθηκε παραπάνω}
+\label{sec:interesting-question}
+\begin{infobox}{}
+	Έστω \( H(f) \) είναι η χαρακτηριστική μεταφοράς πλάτους ενός ζωνοπερατού φίλτρου,
+	η οποία περιγράφεται \textbf{στις θετικές συχνότητες} από τη σχέση:
+	\[
+	H(f) = \begin{cases}
+	c, \qquad & f \in \left[ f_c+f_v,\ f_c+w \right]\text{ (ζώνη διέλευσης)} \\
+	G(f),\qquad & f\in \left[f_c-f_v,\ f_c+f_v\right]\text{ (ζώνη μετάδοσης)} \\
+	0,\qquad & \text{αλλού}
+	\end{cases}
+	\]
+	
+	Η απαίτηση \( H(f+f_c) + H(f-f_c) = c \) στο διάστημα \( [-f_v,+f_v] \) απαιτεί από
+	το τμήμα \( G(f) \) της χαρακτηριστικής να παρουσιάζει περιττή συμμετρία γύρω από το
+	σημείο \( \left(f_c,\ H(f_c)\right) \).
+	
+	Να αποδειχθεί μαθηματικά και πλήρως η παραπάνω πρόταση.
+\end{infobox}
+
+\subsection{Ασκήσεις}
+\begin{attnbox}{Μάθημα}
+	Κάθε Τρίτη θα γίνεται μάθημα ασκήσεων.
+\end{attnbox}
+\begin{attnbox}{Ασκήσεις}
+	Όλες οι ασκήσεις είναι ανεβασμένες στην ιστοσελίδα.
+\end{attnbox}
+
+Έγιναν οι ασκήσεις:
+\begin{itemize}
+	\item \textbf{2} από το σετ
+	\href{https://genesis.ee.auth.gr/dimakis/greek/courses/telesysI/exers/am.pdf}{Διαμόρφωση Πλάτους 1}
+	\item \textbf{3} από το σετ
+	\href{https://genesis.ee.auth.gr/dimakis/greek/courses/telesysI/exers/am.pdf}{Διαμόρφωση Πλάτους 1}
+\end{itemize}
+
+\paragraph{Παράδειγμα}
+Δίνεται ένα μήνυμα πληροφορίας \( m(t) \) για το οποίο οι ελάχιστες και μέγιστες τιμές
+είναι:
+\begin{align*}
+\min\left[m(t)\right] &= -2\\
+\max\left[m(t)\right] &= +3
+\end{align*}
+
+Ποιά είναι η μέγιστη τιμή που μπορεί να πάρει ο συντελεστής \( k_a \) σύμφωνα με τη
+λιγότερο αυστηρή συνθήκη για την αποφυγή υπερδιαμόρφωσης;
+
+(Για \( s(t) = A_c(1+k_am(t)) \cos2πf_ct \))
+
+\subparagraph{Λύση}
+
+Θυμόμαστε τη μέθοδο αποδιαμόρφωσης του AM σήματος:
+\todo{Graph 84}
+
+Παρατηρούμε ότι ο φωρατής βγάζει ως έξοδο το \( A_c\left|1+k_a m(t)\right| \),
+ενώ η επιθυμητή έξοδος είναι η \( A_c\left(1+k_a m(t)\right) \). Αυτές οι δύο τιμές είναι
+ίσες μόνο όταν ισχύει \( 1+k_a m(t) \geq 0 
+\implies \boxed{k_am(t)} \geq -1 \), που είναι η συνθήκη για να μην υπάρχει
+υπερδιαμόρφωση.
+
+Η συνθήκη όμως που γνωρίζουμε από τη θεωρία είναι η εξής:
+\[
+\left| k_am(t) \right| \leq 1 \implies -1 \leq k_a m(t) \leq 1
+\]
+που περιλαμβάνει και το κομμάτι \( k_am(t) \leq 1 \), το οποίο όμως δεν επηρεάζει την
+ύπαρξη ή όχι της υπερδιαμόρφωσης.
+
+Επομένως, για εμάς πρέπει να ισχύει:
+\begin{align*}
+	1+\min\left[ k_am(t) \right] \geq 0 &\implies
+	k_a\min\left[ m(t) \right] \geq 1 \implies \\ &\implies \boxed{
+		k_a \leq \frac{1}{2}
+		}
+\end{align*}
+
+\paragraph{Παράδειγμα}
+Δίνεται ένα AM σήμα:
+\[
+A_c\left( a+0.75m(t) \right)\cos 2πf_c t
+\]
+όπου \( \max\left[m(t)\right] = 2 \) και \( \min\left[m(t)\right] = -1\).
+
+Να βρεθεί η τιμή της σταθεράς \( a \) για:
+\begin{enumgreekparen}
+	\item Ποσοστό διαμόρφωσης 100\%
+	\item Ποσοστό διαμόρφωσης 50\%
+\end{enumgreekparen}
+
+\subparagraph{Λύση}
+\begin{enumgreekparen}
+	\item Ποσοστό διαμόρφωσης 100\% σημαίνει ότι το σήμα μόλις δεν υπερδιαμορφώνεται,
+	δηλαδή το πλάτος \( A_c(a+0.75m(t)) \) του συνημιτόνου μόλις φτάνει στο 0, και δεν
+	πηγαίνει κάτω από αυτό, δηλαδή:
+	
+	\begin{align*}
+		a+0.75m(t) \geq 0 &\implies a+\min\left[0.75m(t)\right] = 0 \implies
+		\\ &\implies a+0.75\min\left[m(t)\right] = 0 \implies \\& \implies
+		\boxed{a=0.75}
+	\end{align*}
+	
+	\item Για να έχω ποσοστό διαμόρφωσης 50\%, θα πρέπει ουσιαστικά να μπορώ να
+	διπλασιάσω τον όρο \( a+0.75m(t) \) χωρίς να υπερδιαμορφώνω το σήμα, δηλαδή:
+	
+	\begin{align*}
+		1+\frac{0.75}{a}\cdot m(t) &= 0.5 \\
+		\implies 1+\frac{0.75}{a}\min\left[ m(t) \right] &= 0.5 \\
+		\implies \boxed{a=0.5}
+	\end{align*}
+\end{enumgreekparen}
+
+\paragraph{Παράδειγμα}
+Έχουμε έναν ραδιοφωνικό σταθμό στα \( f_c = \SI{700}{\kilo\hertz} \), και θέλουμε να
+τον \textbf{ετεροδυνώσουμε} στα \( f_{IF} = \SI{400}{\kilo\hertz} \), δηλαδή να
+τον κατεβάσουμε στα \( \SI{400}{\kilo\hertz} \) προτού τον κατεβάσουμε στη βασική ζώνη.
+
+Ποιά πρέπει να είναι συχνότητα \( f_{LO} \) του τοπικού ταλαντωτή;
+
+Η κεραία AM λαμβάνει ολόκληρη τη μπάντα των AM, δηλαδή \( f \in \left[540,\;1600\right]
+\si{\kilo\hertz} \).
+
+\subparagraph{Λύση}
+Το φάσμα που λαμβάνει η κεραία μοιάζει κάπως έτσι:
+\todo{Graph 91}
+
+Εμείς όμως θέλουμε να ακούσουμε μόνο το σταθμό στα \( \SI{700}{\kilo\hertz} \).
+
+Ο υπερετερόδυνος δέκτης μοιάζει κάπως έτσι:
+
+\begin{tikzpicture}
+\draw (-1,0) node[rxantenna,xscale=-1] (ant) {};
+\draw (0,0) node[rectangle,draw,align=left] (f1) {RF\\φίλτρο};
+\draw (2,0) node[rectangle,draw] (m) {μίκτης};
+\draw (4,0) node[rectangle,draw,align=left] (f2) {IF\\φίλτρο};
+\draw (6,0) node[rectangle,draw,align=center] (amp) {audio\\amplifier};
+
+\draw[<-] (m) -- ++(0,-1) node[below] (osc) {$f_{LO}$};
+\draw (ant) -- (f1) -- (m) -- (f2) -- (amp);
+\draw (f2.south) node[below,align=center] {$f_{\mathrm{centre}} = $ 100 kHz\\BW $ = $ 10 kHz};
+\draw (amp.east) -- ++(0.5,0);
+\end{tikzpicture}
+
+Στον μίκτη ουσιαστικά πολλαπλασιάζουμε με τη συχνότητα \( f_{LO} \) για να μετακινήσουμε
+το σήμα σε μια \( f_{IF} \) (Intermediate Frequency) που θα αποδιαμορφώσουμε αργότερα.
+
+Οι συχνότητες με τις οποίες μπορούμε να πολλαπλασιάσουμε το σήμα ώστε να μετακινηθεί είναι
+η \( f_{LO} = \SI{300}{\kilo\hertz} \) και \( f_{LO} = \SI{1100}{\kilo\hertz} \), κάτι
+που μπορούμε να διαπιστώσουμε αν σκεφτούμε τη συνέλιξη των δύο εισόδων στη συχνότητα.
+
+Όμως σε κάθε έναν από τους παραπάνω πολλαπλασιασμούς, προστίθενται επιπλέον συχνότητες-φάντασμα στα \( \SI{400}{\kilo\hertz} \), από τα \( f' = \SI{100}{\kilo\hertz} \)
+και τα \( f' = \SI{1500}{\kilo\hertz} \) αντίστοιχα, τα οποία επηρεάζουν και προστίθενται
+στο επιθυμητό σήμα.
+
+Εφ' όσον όμως στα \( \SI{100}{\kilo\hertz} \) δεν έχουμε σήμα, αφού το φίλτρο RF δεν
+το αφήνει να περάσει, μπορούμε να χρησιμοποιήσουμε την τοπική συχνότητα των
+\( f_{LO} = \SI{300}{\kilo\hertz} \) για να ετεροδυνώσουμε το σήμα.
+
+\todo{Improvise a graph}
+
+\paragraph{Παράδειγμα}
+\todo{Graph 92, από 3 Σεπτ. 17}
+
+Δίνεται ένας υπερετερόδυνος δέκτης, όπου η κεραία λαμβάνει το φάσμα των AM ραδιοφωνικών σταθμών
+(540 - 1600 kHz) με εύρος ζώνης του καθενός 10 kHz.
+
+Η κεντρική συχνότητα του RF φίλτρου ρυθμίζεται
+μαζί με την \( f_{\mathrm{LO}} \), και ισχύει:
+\[
+f_{\mathrm{RF}} = f_{\mathrm{LO}} - \SI{5}{\kilo\hertz}
+\]
+ενώ για τη συχνότητα \( f_c \) του σταθμού που θέλουμε
+να ακούσουμε ισχύει:
+\[
+f_{\mathrm{LO}} = f_C + \SI{455}{\kilo\hertz}
+\]
+\begin{enumgreekparen}
+	\item Ζωγραφίστε ποιοτικά το φάσμα στην είσοδο
+	του RF φίλτρου
+	\item Δικαιολογήστε ότι αυτό επιτυγχάνεται εάν η συχνότητα
+	\( f_{\mathrm{LO}} \) του τοπικού ταλαντωτή παίνρι τιμές στο διάστημα \( [995,\;2055]\si{\kilo\hertz} \). Συνοδεύστε την απάντησή σας με ένα παράδειγμα.
+	\item Βρείτε το δεύτερο διάστημα τιμών στο οποίο
+	μπορεί να κυμαίνεται η \( f_{\mathrm{LO}} \), ώστε
+	να ετεροδυνώνεται στα \( \SI{455}{kHz} \)
+	\item Υπολογίστε το λόγο της μέγιστης προς την ελάχιστη \( f_{\mathrm{LO}} \)
+	για καθένα από τα παραπάνω διαστήματα συχνοτήτων.
+	Η επιλογή ποιού από τα δύο καταλήγει σε υλοποίηση του τοπικού ταλαντωτή
+	τεχνοοικονομικά πιο συμφέρουσα;
+\end{enumgreekparen}
+
+\subparagraph{Λύση}
+\begin{enumgreekparen}
+	\item \todo{Graph 91 (again)}
+	\item[(γ)] \(  f_c=540,\ f_{IF}=455,\ f_{LO} = 85, f_C' = \SI{70}{\kilo\hertz}  \)
+	\item[(δ)] \(
+	\begin{aligned}[t]
+		\frac{f_{LO_{\max}}}{f_{LO_{\min}}}
+		= \frac{2055}{995} &= 2.065 \\
+		\frac{f_{LO_{\max}}}{f_{LO_{\min}}}
+		= \frac{1145}{85} &= 13.47
+	\end{aligned} \)
+	
+	\textit{"Τεχνοοικονομικά πιο συμφέρουσα"}
+	σημαίνει ότι το κύκλωμα είναι πιο απλό για να
+	υλοποιηθεί, με αποτέλεσμα να είναι πιο φθηνό.
+	
+	Ουσιαστικά εδώ έχουμε ένα κύκλωμα που ταλαντώνεται σε μία συχνότητα. Είναι
+	πιο δύσκολο να κατασκευάσουμε μία τέτοια διάταξη με μεγαλύτερο εύρος ζώνης,
+	αφού απαιτούνται μεγαλύτεροι μεταβλητοί πυκνωτές.
+\end{enumgreekparen}
+
+
+
+\section{Διαμόρφωση γωνίας}
+Μέχρι στιγμής ασχοληθήκαμε με διαμορφώσεις πλάτους, που μετέβαλλαν μόνο το πλάτος
+του σήματος (ίσως και τη φάση με κάποιον τρόπο, όπως εξηγήσαμε σε \hyperref[application.am-phase]{μια εφαρμογή}).
+
+Τώρα θα μελετήσουμε συστήματα στα οποία μεταβάλλουμε τη συχνότητα ή τη φάση του
+εκπεμπόμενου σήματος (αργότερα θα δούμε ότι αυτά τα δύο είναι ισοδύναμα), διατηρώντας το
+πλάτος σταθερό:
+\[
+A_c \cos(\underbrace{2πf_ct + \vartheta}_{\theta(t)})
+\]
+
+Η διαμόρφωση αυτή ονομάζεται \textbf{Phase Modulation (PM)} ή \textbf{Frequency Modulation
+	 (FM)}, εμφανίστηκε το 1930, και άρχισε να χρησιμοποιείται για broadcasting το 1960-1970.
+Έχει το πλεονέκτημα ότι, παρ' όλο που απαιτεί ένα πιο ακριβό και πολύπλοκο σύστημα, έχει
+καλύτερη ποιότητα πληροφορίας, επειδή δεν επηρεάζεται από τον θόρυβο όσο και τα AM.
+
+\subsection{Βασικοί ορισμοί}
+Έστω ένα σήμα:
+\[
+s(t) = A_c \cos \underbrace{2πf_c t}_{\theta(t)}
+\] 
+
+Τότε από παραπάνω προκύπτει ότι η συχνότητα είναι:
+\[
+f_c = \frac{\theta(t)}{2πt}=\frac{\omega_c}{2π}
+\]
+δηλαδή ο αριθμός των κύκλων που πραγματοποιεί το συνημίτονο μέσα στην μονάδα του χρόνου:
+\[
+f_c = \frac{\frac{\theta(t+\dif t)-\theta(t)}{2π}}{\dif t}
+\]
+
+\begin{defn}{Στιγμιαία συχνότητα}{}
+Για ένα σήμα \( s(t) = A_c\cos\left(\theta_i(t)\right) \) με \textbf{στιγμιαία φάση}
+\( \theta_i(t) \)
+ορίζουμε τη \textbf{μέση
+	συχνότητα}:
+\[
+f_{Δt}(t) = \frac{\theta_i(t+\Delta t) - \theta_i(t)}{2π Δ t}
+\]
+και παίρνοντας το όριο του \( Δt \) στο 0, ορίζουμε τη \textbf{στιγμιαία συχνότητα}:
+\begin{align*}
+	f_i(t) &= \lim_{Δt \to 0} f_{Δt}(t) = \lim_{Δt\to 0}\frac{\theta_i(t+Δt)-\theta_i(t)}{2πΔt}
+	\implies \\
+	\Aboxed{f_i(t) &= \frac{1}{2π} \od{\theta_i(t)}{t}}
+\end{align*}
+\end{defn}
+
+Έτσι, μπορούμε να έχουμε ένα σήμα σταθερής ή μεταβαλλόμενης συχνότητας. Πρακτικά, μια
+μεταβαλλόμενη συχνότητα σημαίνει ότι το συνημίτονο δεν θα συναντάει τον οριζόντιο άξονα
+σε σημεία με ίσες αποστάσεις μεταξύ τους, αλλά σε διαφορετικές.
+
+\todo{Graph 85}
+
+\subsubsection{Διαμορφώσεις PM \& AM}
+Τώρα μπορούμε να δώσουμε τις μαθηματικές εκφράσεις για τις διαμορφώσεις φάσης και συχνότητας:
+
+\begin{defn}{PM - Διαμόρφωση Φάσης}{}
+	Ορίζουμε ως εξής τη \textbf{διαμόρφωση φάσης}:
+	\[
+	\boxed{\theta_i(t) = 2πf_c t + k_p m(t)}
+	\]
+	όπου το \( k_p \) είναι μια σταθερά που μετριέται π.χ σε \( \si{\radian/\volt} \).
+	\tcblower
+	Δηλαδή το σήμα μας είναι της μορφής:
+	\[
+	\boxed{s(t) = A_c\cos \left[2πf_c t + k_p m(t)\right]}
+	\]
+\end{defn}
+Η διαμόρφωση φάσης οδηγεί στη μαθηματική έκφραση και της στιγμιαίας συχνότητας:
+\[
+\boxed{f_i(t) = f_c + \frac{k_m}{2π} \od{m(t)}{t}}
+\]
+
+\begin{defn}{FM - Διαμόρφωση Συχνότητας}{}
+	Ορίζουμε ως εξής τη \textbf{διαμόρφωση φάσης}:
+	\[
+	\boxed{f_i(t) = f_c + k_f m(t)}
+	\]
+	όπου το \( k_f \) είναι μια σταθερά που μετριέται π.χ σε \( \si{\hertz/\volt} \).
+	\tcblower
+	Για να υπολογίσουμε το σήμα, έχουμε, από τη σχέση \( f_i(t) = \frac{\dif \theta_i(t)}{2π\dif t} \):
+	\begin{align*}
+		\frac{1}{2π}\od{\theta_i(t)}{t} &= f_c+k_f m(t) \implies\\
+		\theta_i(t) &= 2πf_ct + 2πk_f \int_{0}^{t} m(τ)\dif τ
+	\end{align*}
+	
+	Άρα το σήμα μας είναι:
+	\[
+	\boxed{s(t) = A_c\cos\left[ 2πf_c t + 2πk_f\int_{0}^{t} m(τ)\dif τ \right] }
+	\]
+\end{defn}
+
+\subsubsection{Ισχύς}
+Θυμόμαστε από \hyperref[am.power]{προηγούμενο κεφάλαιο} ότι η ισχύς ενός σήματος είναι:
+\[
+P_w = \frac{1}{2}A_c^2
+\]
+
+Αφού έχουμε σταθερό πλάτος, η ισχύς αυτή παραμένει σταθερή, και γενικά για τις διαμορφώσεις
+γωνίας είναι μικρή.
+
+\paragraph{}
+Επίσης, επισημαίνουμε ότι οι διαμορφώσεις γωνίας \textit{δεν είναι γραμμικές}.
+Πράγματι, αν έχουμε δύο σήματα \( m_1(t) + m_2(t) \) που θέλουμε να προσθέσουμε και
+να διαμορφώσουμε κατά PM:
+\begin{align*}
+	m(t) &= m_1(t) + m_2(t) \\
+	s_1(t) &= A_c\cos \left[ 2πf_c t + k_p m_1(t) \right] \\
+	s_2(t) &= A_c\cos \left[ 2πf_c t + k_p m_2(t) \right] \\
+	s(t) &= A_c\cos \left[ 2πf_c t + k_p \left( m_1(t)+m_2(t)\right)\right] \\
+	s(t) &\neq s_1(t) + s_2(t), \qquad \text{δηλαδή δεν ισχύει η συνθήκη γραμμικότητας.}
+\end{align*}
+
+Η έλλειψη γραμμικότητας αυτή οδηγεί στο άπλωμα του PM/FM διαμορφωμένου σήματος στο φάσμα.
+Για αυτόν το λόγο οι ραδιοφωνικοί σταθμοί FM βρίσκονται σε υψηλότερες συχνότητες
+(88-108 MHz) από τους αντίστοιχους στα AM.
+
+\paragraph{Ένα παράδειγμα}
+Έστω ότι θέλουμε να στείλουμε ένα σήμα:
+\todo{Graph 86}
+
+με συχνότητα φέροντος \( f_c = \frac{1}{4} \), πρώτα με \textit{διαμόρφωση φάσης} με
+\( k_p = \frac{π}{2}\ \si{\radian/\volt} \),
+και μετά με \textit{διαμόρφωση συχνότητας} με \( k_f = \SI{1}{\hertz/\volt} \).
+
+\subparagraph{Με διαμόρφωση φάσης}
+Έχουμε:
+\[
+s(t) = \left\lbrace \begin{array}{lr}
+A_c\cos(2πf_c t + k_p at), &\quad t \geq 0 \\
+A_c\cos(2πf_c t), &\quad t < 0
+\end{array} \right\rbrace = \begin{cases}
+A_c\cos(πt) &\qquad t \geq 0 \\
+A_c\cos(\sfrac{πt}{2} ) &\qquad t < 0
+\end{cases}
+\]
+Βλέπουμε δηλαδή ότι η συχνότητα του σήματος μετά το 0 είναι διπλάσια από αυτήν πριν το 0.
+Αν θέλουμε να υπολογίζουμε τα σημεία στα οποία μηδενίζεται η συνάρτηση δεξιά του 0,
+έχουμε \( 2πf_c t_n + k_pat_n = \frac{π}{2} + nπ \implies t_n = \frac{1}{2} + n \).
+
+\subparagraph{Με διαμόρφωση συχνότητας}
+Έχουμε:
+\[
+s(t) = \left\lbrace \begin{array}{lr}
+A_c\cos(2πf_c t + πk_f at^2), &\quad t \geq 0 \\
+A_c\cos(2πf_c t), &\quad t < 0
+\end{array} \right\rbrace = \begin{cases}
+A_c\cos\left( \frac{π}{2}t + πt^2 \right) &\qquad t \geq 0 \\
+A_c\cos(\sfrac{πt}{2} ) &\qquad t < 0
+\end{cases}
+\]
+
+Μάλιστα, δεξιά του 0, η στιγμιαία συχνότητα θα είναι:
+\begin{align*}
+	f_i(t) &= \frac{1}{2π}\od{\theta(t)}{t} = \frac{1}{2}\cdot \left(\frac{1}{2}+2πt\right)
+\end{align*}
+δηλαδή η συχνότητα του εκπεμπόμενου σήματος θα αυξάνεται συνεχώς:
+\todo{Graph 88}
+
+Αντίστοιχα, αν θέλουμε να υπολογίσουμε τα σημεία στα οποία περνάμε από το 0, θέλουμε:
+\begin{align*}
+	2πf_c t_n + πk_fat^2_n &= \frac{π}{2} + n π \implies \\
+	t_n^2 + \frac{1}{2} t_n -n -\frac{1}{2} &= 0 \implies
+	t_n = \frac{1}{4} \left( -1 + \sqrt{9+16n} \right)
+\end{align*}
+\todo{Improvise a graph like Graph 89}
+
+\subsubsection{Δυαδικότητα των διαμορφώσεων}
+
+\begin{align*}
+	\text{PM}: &\quad A_c\cos\left[2πf_c t + k_p m(t)\right] \\
+	\text{FM}: &\quad A_c\cos\left[2πf_c t + 2π k_f \int_{0}^{τ} m(τ)\dif τ\right]
+\end{align*}
+
+Παρατηρούμε ότι ουσιαστικά οι διαμορφωτές FM και PM διαφέρουν μόνο κατά μία ολοκλήρωση
+ή παραγώγιση της πληροφορίας:
+\todo{Graph 90}
+
+Δηλαδή αν στην είσοδο ενός διαμορφωτή PM βάλουμε ένα ολοκληρωμένο σήμα, θα πάρουμε FM.
+Αν στην είσοδο ενός διαμορφωτή FM βάλουμε ένα σήμα που έχει παραγωγιστεί, θα πάρουμε PM.
+Επομένως, μπορούμε να αναλύσουμε μόνο το FM σήμα, αντί να πραγματοποιούμε ξεχωριστή
+ανάλυση για τα δύο είδη διαμορφώσεων.
+
+\subsection{FM}
+Η διαμόρφωση του FM, όπως είδαμε παραπάνω, είναι:
+\[
+s(t) = A_c\cos (2πf_ct + 2πk_f \int_0^\infty m(λ)\dif λ)
+\]
+
+Αν θεωρήσουμε ότι έχουμε ημιτονοειδές σήμα εισόδου \textbf{με συχνότητα \( \mathbf{f_m} \)}:
+\[
+m(t) = A_m\cos(2πf_m t)
+\]
+τότε η στιγμιαία συχνότητα είναι:
+\begin{align*}
+	f_i(t) &= f_c + k_f A_m \cos (2πf_m t)\\
+	&= f_c + Δf \cos (2πf_m t) \qquad \text{όπου } \boxed{Δ f = k_fA_m}
+\end{align*}
+\begin{defn}{Μέγιστη απόκλιση συχνότητας}{}
+	Ορίζουμε το:
+	\[
+	Δf = k_fA_m
+	\]
+	ως τη \textbf{μέγιστη απόκλιση συχνότητας}, η οποία φαίνεται ότι εξαρτάται
+	μόνο από το πλάτος του σήματος.
+\end{defn}
+
+Θυμόμαστε τον ορισμό της στιγμιαίας συχνότητας:
+\[
+\frac{1}{2π} \od{\theta_i(t)}{t} = f_i(t)
+\implies \theta_i = 2π\int_0^t f_i(t) \dif t
+\]
+Άρα, για ημιτονοειδές σήμα:
+\[
+\theta_i(t) = 2πf_c t + \frac{Δf\;f_m}{\sin 2π f_m t}
+\]
+και το διαμορφωμένο FM σήμα είναι:
+\[
+s_\mathrm{FM}(t) = A_c \cos \left[ 2πf_ct + \frac{Δf}{f_m} \sin 2πf_m t \right]
+\]
+
+\begin{defn}{Δείκτης διαμόρφωσης}
+	Ορίζουμε τον \textbf{δείκτη διαμόρφωσης \( \mathbf{\beta} \)} (modulation index)
+	ως εξής:
+	\[
+	β = \frac{Δf}{f_m} = \frac{A_m k_f}{f_m}
+	\]
+	
+	Ο δείκτης διαμόρφωσης στην ουσία εκφράζει την \textbf{απόκλιση φάσης}.
+\end{defn}
+
+Άρα η \textbf{τελική έκφραση} της διαμόρφωσης FM είναι:
+\[
+s_{\mathrm{FM}}(t) = A_c \cos(2π f_c t + β\sin 2πf_m t)
+\]
+
+Τυπικοί δείκτες διαμόρφωσης είναι \( 1 \leq β \leq 20 \), και όπως θα δούμε
+αργότερα, το \( β \) επηρεάζει το εύρος ζώνης του εκπεμπόμενου σήματος. Για μεγάλα
+\( β \) έχουμε FM ευρείας ζώνης, ενώ για μικρά \( β \) (π.χ 0.5 ή 0.3) έχουμε
+FM στενής ζώνης (Narrow Band FM ‒ NBFM).
+
+Αντίστοιχα, για το PM ισχύει:
+\begin{align*}
+	\theta_i (t) &= 2πf_c t + A_m k_p \cos 2πf_m t \\
+	β_P &= k_p A_m\\
+	f_i(t) &= f_c - \frac{k_pA_m f_c}{2π}\sin 2π f_m t\\
+	s_{\mathrm{PM}}(t) &= A_c\cos(2π f_c t + \underbrace{A_mk_p}{β_P} \cos 2πf_m t)
+\end{align*}
+
+\subsubsection{NBFM}
+
+Αν αναλύσουμε τον τύπο του διαμορφωμένου σήματος FM, θα έχουμε:
+\begin{align*}
+	s(t) &= A_c \cos\left[ 2πf_c t + β\sin 2π f_m t \right] \\
+	&= A_c \cos 2πf_c t \cos (β\sin 2π f_m t) - A_c \sin(2πf_c t)
+	\sin(β\sin 2πf_m t)
+\end{align*}
+
+Όταν για το \( β \) ισχύει \( \underline{β \ll \SI{1}{\radian}} \), τότε λέμε
+ότι έχουμε FM στενής ζώνης (\textbf{Narrow Band FM ‒ NBFM}). Πρακτικά αυτό
+συμβαίνει όταν το \( β \) είναι μικρότερο του \( 0.3 \), ή ακόμα και του \( 0.5 \).
+
+Τότε μπορούμε να θεωρήσουμε τις προσεγγίσεις:
+\begin{align*}
+	\cos\left[β\sin 2πf_m t\right] &\simeq 1 \\
+    \sin\left[β\sin 2πf_m t\right] &\simeq β\sin 2πf_m t
+\end{align*}
+
+Άρα προσεγγιστικά ισχύει:
+\begin{align*}
+	s(t) &\simeq A_c\cos 2πf_c t - βA_c \sin(2πf_m t)\sin(2πf_c t) \\
+	&= A_c\cos 2πf_c t + \frac{1}{2}βA_c \left[
+	    \cos 2π(f_c+f_m)t - \cos 2π(f_c-f_m)t
+	\right]
+\end{align*}
+
+Η παραπάνω έκφραση όμως μοιάζει με ένα σήμα διαμορφωμένο κατά AM. Πράγματι,
+γενικά για τα AM σήματα ισχύει:
+\begin{align*}
+	s_{\mathrm{AM}}(t) &= A_c (1 + \overset{\raisebox{2pt}{\ensuremath{\mathclap{k_aA_m}}}}{\mu}\cos 2πf_m t)\cos 2πf_c t
+	\\ &= A_c \cos 2π f_c t + μA_c \cos 2π f_m t \cos 2πf_c t
+	\\ &= A_c \cos 2π f_c t + \frac{1}{2}μA_c\left[
+	\cos 2π(f_c+f_m)t + \cos 2π(f_c-f_m)t
+	\right]
+\end{align*}
+Τα δύο σήματα φαίνονται παρόμοια, και μπορούμε να συγκρίνουμε τις υλοποιήσεις
+του διαμορφωτή και τα φάσματα εξόδου:
+\todo{Graph 93 (il)}
+
+Αν παραστήσουμε την έκφραση του AM σε μορφή φασιθετών, θα έχουμε ένα διάνυσμα
+\( A_c \) που περιστρέφεται με ταχύτητα \( \omega_c = 2π f_c \), και στο τέλος
+του μπορούμε να προσθέσουμε τα δύο διανύσματα που περιστρέφονται με ταχύτητες
+\( 2π(f_c+f_m) \) και \( 2π(f_c-f_m) \). Το πρώτο περιστρέφεται πιο γρήγορα
+από το \( \omega_c \), και το δεύτερο πιο αργά. Όμως η συνιστώσα τους είναι προς
+την κατεύθυνση του \( A_c \), και το πλάτος της αυξάνεται και μειώνεται ημιτονοειδώς:
+\todo{Graph 94}
+
+Αντίστοιχα, για το NBFM μπορούμε να πραγματοποιήσουμε μια παρόμοια ανάλυση,
+φροντίζοντας ώστε να αλλάξουμε την κατεύθυνση του διανύσματος με γωνία
+\( -2πf_m t \), αφού έχει αρνητικό πρόσημο. Τελικά θα πάρουμε ως άθροισμα ένα
+διάνυσμα με μία ελαφριά διαφορά γωνίας από αυτήν του \( A_c \), δηλαδή θα
+"τρεμοπαίζει" συνεχώς στο χρόνο. Αυτό το τρεμόοπαιγμα περιέχει και την πληροφορία.
+\todo{Graph 95}
 
 \end{document}
